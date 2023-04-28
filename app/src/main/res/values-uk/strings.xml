@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyProfileMarkup</string>
+    <string name="settings">Налаштування</string>
+    <string name="nameSurname">Ім\'я Прізвище</string>
+    <string name="career">Кар\'єра</string>
+    <string name="address">Адреса</string>
+    <string name="edit_profile">Редагувати профіль</string>
+    <string name="view_contacts">ПЕРЕГЛЯНУТИ МОЇ КОНТАКТИ</string>
+    <string name="registration_header">Давай знайомитись</string>
+    <string name="fill_out_profile">Заповнюй профіль та переходь до застосунку!</string>
+    <string name="email">Електронна пошта</string>
+    <string name="password">Пароль</string>
+    <string name="remember_me">Запам\'ятати мене</string>
+    <string name="google">GOOGLE</string>
+    <string name="register">ЗАРЕЄСТРУВАТИСЯ</string>
+    <string name="about_terms_and_conditions">Натискаючи Зареєструватися ви погодуєтесь з Умовами використання</string>
+    <string name="have_an_account">Вже маєте акаунт?</string>
+    <string name="sign_in">Увійти</string>
+    <string name="or">або</string>
+</resources>
