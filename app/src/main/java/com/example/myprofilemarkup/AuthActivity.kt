@@ -1,18 +1,15 @@
 package com.example.myprofilemarkup
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Patterns
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myprofilemarkup.databinding.ActivityMainBinding
 import com.example.myprofilemarkup.databinding.ActivityRegistrationBinding
-import java.util.regex.Pattern
 
 class AuthActivity : AppCompatActivity() {
 
@@ -20,20 +17,48 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegistrationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setupListeners()
-        binding.registrationButton.setOnClickListener {
-//            if (isValidate()) {
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-//            } else {
-//                Toast.makeText(this, "Error" , Toast.LENGTH_LONG).show()
-//            }
+        val sharedPreference =  getSharedPreferences(getString(R.string.preference_file_key),
+            Context.MODE_PRIVATE)
+        val email = sharedPreference.getString("E-mail", null)
+        if (email != null) {
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("nameSurname", getNameSurname(email))
             startActivity(intent)
+        } else {
+            binding = ActivityRegistrationBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+            setupListeners()
+            binding.registrationButton.setOnClickListener(this::registrationButtonClickEvent)
         }
+    }
 
+    private fun registrationButtonClickEvent(view: View) {
+        if (isValidate()) {
+            val sharedPreference =  getSharedPreferences(getString(R.string.preference_file_key),
+                Context.MODE_PRIVATE)
+            if (binding.checkBoxRemember.isChecked) {
+                with (sharedPreference.edit()) {
+                    putString("E-mail", binding.textInputEditTextEmail.text.toString())
+                    apply()
+                }
+            }
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("nameSurname", getNameSurname(binding.textInputEditTextEmail.text.toString()))
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+        } else {
+            Toast.makeText(this, "Incorrect e-mail or password!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun getNameSurname(email: String): String {
+        val splitEmail = email.split("@")[0]
+        return if (splitEmail.contains(".")) {
+            val nameSurname = splitEmail.split(".")
+            val name = nameSurname[0]
+            val surname = nameSurname[1]
+            name.replaceFirstChar { it.uppercase() } + " " + surname.replaceFirstChar { it.uppercase() }
+        } else splitEmail.replaceFirstChar { it.uppercase() }
     }
 
     private fun isValidate(): Boolean = validateEmail() && validatePassword()
@@ -51,6 +76,7 @@ class AuthActivity : AppCompatActivity() {
                 R.id.textInputEditTextEmail -> {
                     validateEmail()
                 }
+
                 R.id.textInputEditTextPassword -> {
                     validatePassword()
                 }

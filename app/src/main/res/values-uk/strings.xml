@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyProfileMarkup</string>
+    <string name="preference_file_key">MyProfileMarkupPreference</string>
     <string name="settings">Налаштування</string>
     <string name="nameSurname">Ім\'я Прізвище</string>
     <string name="career">Кар\'єра</string>
