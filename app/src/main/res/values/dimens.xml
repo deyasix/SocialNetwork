@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="nameSurnameTextSize">20sp</dimen>
+
+    <dimen name="registration_little_text">16sp</dimen>
+    <dimen name="registration_small_text">18sp</dimen>
+    <dimen name="registration_average_text">20sp</dimen>
+    <dimen name="registration_max_text">26sp</dimen>
+
+    <dimen name="padding_little">5dp</dimen>
+    <dimen name="padding_small">10dp</dimen>
+    <dimen name="padding_average">20dp</dimen>
+    <dimen name="padding_max">100dp</dimen>
+    <dimen name="padding_big">50dp</dimen>
+    <dimen name="padding_average_double">40dp</dimen>
 </resources>

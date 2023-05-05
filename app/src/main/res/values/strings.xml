@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MyProfileMarkup</string>
-    <string name="preference_file_key">MyProfileMarkupPreference</string>
     <string name="settings">Settings</string>
     <string name="nameSurname">Name Surname</string>
     <string name="career">Career</string>
@@ -18,4 +17,10 @@
     <string name="have_an_account">Already have an account?</string>
     <string name="sign_in">Sign in</string>
     <string name="or">or</string>
+    <string name="required_field">Required Field!</string>
+    <string name="invalid_email">Invalid e-mail!</string>
+    <string name="required_digit_password">Required at least 1 digit</string>
+    <string name="password_rules">Password must contain upper and lower case letters</string>
+    <string name="password_size">The length of the password cannot be less than 8</string>
+    <string name="incorrect_password_email">Incorrect e-mail or password!</string>
 </resources>
