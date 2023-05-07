@@ -11,19 +11,19 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:background="@color/blue">
+        android:background="?attr/colorPrimary">
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/settings"
             android:textColor="@color/profileWhite"
             android:fontFamily="@font/open_sans"
-            android:textSize="24sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="15dp"/>
+            android:textSize="@dimen/max_text"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginStart="@dimen/padding_small"/>
         <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/photo_main_land"
+            android:layout_height="@dimen/photo_main_land"
             app:shapeAppearanceOverlay="@style/roundedImageView"
             android:src="@drawable/avatar"
             android:layout_gravity="center"/>
@@ -36,7 +36,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/open_sans"
             android:textSize="@dimen/nameSurnameTextSize"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="@dimen/padding_little"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:textColor="@color/grey_text"
             android:layout_gravity="center"
             android:fontFamily="@font/open_sans"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/little_text"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,66 +52,63 @@
             android:textColor="@color/grey_text"
             android:layout_gravity="center"
             android:fontFamily="@font/open_sans"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/little_text"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.2"
+        android:layout_weight="1.1"
         android:orientation="vertical"
-        android:background="@color/white"
-        >
+        android:background="?attr/colorSecondary">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_facebook"/>
+                android:layout_width="@dimen/padding_average_double"
+                android:layout_height="@dimen/padding_average_double"
+                android:layout_marginVertical="@dimen/padding_small"
+                android:layout_marginHorizontal="@dimen/padding_average"
+                android:layout_marginBottom="@dimen/padding_little"
+                android:src="@drawable/ic_facebook"
+                android:contentDescription="@string/icon_facebook_description"/>
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:src="@drawable/ic_linkedin"/>
+                android:layout_width="@dimen/padding_average_double"
+                android:layout_height="@dimen/padding_average_double"
+                android:layout_marginVertical="@dimen/padding_small"
+                android:layout_marginHorizontal="@dimen/padding_average"
+                android:layout_marginBottom="@dimen/padding_little"
+                android:src="@drawable/ic_linkedin"
+                android:contentDescription="@string/icon_linkedin_description"/>
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_instagram"/>
+                android:layout_width="@dimen/padding_average_double"
+                android:layout_height="@dimen/padding_average_double"
+                android:layout_marginVertical="@dimen/padding_small"
+                android:layout_marginHorizontal="@dimen/padding_average"
+                android:layout_marginBottom="@dimen/padding_little"
+                android:src="@drawable/ic_instagram"
+                android:contentDescription="@string/icon_instagram_description"/>
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/google_button_height"
             android:text="@string/edit_profile"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:textColor="@color/grey"
-            android:textSize="16sp"
+            android:textSize="@dimen/little_text"
             android:background="@drawable/white_frame_button"
             android:fontFamily="@font/open_sans"
-            android:layout_marginLeft="160dp"
-            android:layout_marginRight="160dp"
             android:textAllCaps="false"/>
-
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="160dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="160dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/round_shape_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_register_height"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_gravity="center"
+            android:background="@drawable/orange_frame_button"
             android:fontFamily="@font/open_sans"
-            android:gravity="center"
             android:text="@string/view_contacts"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/small_text" />
     </LinearLayout>
 
 

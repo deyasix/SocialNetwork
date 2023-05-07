@@ -2,6 +2,7 @@ package com.example.myprofilemarkup
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -14,7 +15,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
 import com.example.myprofilemarkup.databinding.ActivityRegistrationBinding
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class AuthActivity : AppCompatActivity() {
@@ -29,34 +30,42 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var email: String? = null
-        lifecycleScope.launch {
-            try {
-                email = dataStore.data.first()[stringPreferencesKey("email")]
-            } catch (ex: Exception) {
-                Log.e(ex.message, ex.toString())
-            }
-        }
-        if (email != null) {
-            navigateToMain(email.toString())
-        }
+        checkAutoLogin()
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
-        restoreState(savedInstanceState)
-        setContentView(binding.root)
         setupListeners()
+        setContentView(binding.root)
     }
 
-    private fun restoreState(savedInstanceState: Bundle?) {
+    override fun onRestoreInstanceState(
+        savedInstanceState: Bundle?, persistentState: PersistableBundle?
+    ) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState)
         if (savedInstanceState != null) {
             binding.textInputEditTextEmail.setText(savedInstanceState.getString("EMAIL"))
-            if (binding.textInputEditTextEmail.text?.isNotEmpty() == true) validateEmail()
             binding.textInputEditTextPassword.setText(savedInstanceState.getString("PASSWORD"))
-            if (binding.textInputEditTextPassword.text?.isNotEmpty() == true) validatePassword()
             binding.checkBoxRemember.isChecked = savedInstanceState.getBoolean("REMEMBER")
         }
     }
 
+    /**
+     * Method that checks if user is log in or not. If user log in before, navigate to main screen.
+     */
+    private fun checkAutoLogin() {
+        lifecycleScope.launch {
+            try {
+                dataStore.data.map { preferences ->
+                    preferences[stringPreferencesKey("email")] ?: ""
+                }
+                    .collect { if (it.isNotEmpty()) navigateToMain(it) }
+            } catch (ex: Throwable) {
+                Log.e(ex.message, ex.toString())
+            }
+        }
+    }
 
+    /**
+     * Overridden method for saving state of text fields and checkbox.
+     */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("EMAIL", binding.textInputEditTextEmail.text.toString())
@@ -64,22 +73,36 @@ class AuthActivity : AppCompatActivity() {
         outState.putBoolean("REMEMBER", binding.checkBoxRemember.isChecked)
     }
 
+    /**
+     * Method that represents event of click on registration button. If user wants to remember him
+     * in the system, add to dataStore user's email.
+     */
     private fun registrationButtonClickEvent() {
         if (isValidate()) {
             val email = binding.textInputEditTextEmail.text.toString()
             if (binding.checkBoxRemember.isChecked) {
                 lifecycleScope.launch {
-                    dataStore.edit { settings ->
-                        settings[stringPreferencesKey("email")] = email}
+                    try {
+                        dataStore.edit { settings ->
+                            settings[stringPreferencesKey("email")] = email
+                        }
+                    } catch (ex: Throwable) {
+                        Log.e(ex.message, ex.toString())
+                    }
                 }
             }
             navigateToMain(email)
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)
         } else {
-            Toast.makeText(this, resources.getString(R.string.incorrect_password_email), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this,
+                resources.getString(R.string.incorrect_password_email), Toast.LENGTH_LONG
+            ).show()
         }
     }
 
+    /**
+     * Method that gets name and surname from email (parsing).
+     */
     private fun getNameSurname(email: String): String {
         val splitEmail = email.split("@")[0]
         return if (splitEmail.contains(".")) {
@@ -89,6 +112,10 @@ class AuthActivity : AppCompatActivity() {
         } else splitEmail.replaceFirstChar { it.uppercase() }
     }
 
+    /**
+     * Method that checks validating of text fields. Each validation should be performed, so
+     * before checks if all validation is satisfied, we add two variables.
+     */
     private fun isValidate(): Boolean {
         val isValidEmail = validateEmail()
         val isValidPassword = validatePassword()
@@ -96,20 +123,37 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        binding.textInputEditTextEmail.addTextChangedListener(TextFieldValidation(binding.textInputEditTextEmail))
-        binding.textInputEditTextPassword.addTextChangedListener(TextFieldValidation(binding.textInputEditTextPassword))
+        binding.textInputEditTextEmail.addTextChangedListener(
+            TextFieldValidation(binding.textInputEditTextEmail)
+        )
+        binding.textInputEditTextPassword.addTextChangedListener(
+            TextFieldValidation(binding.textInputEditTextPassword)
+        )
         binding.registrationButton.setOnClickListener { registrationButtonClickEvent() }
     }
 
+    /**
+     * Method that navigates to the main screen using animation.
+     */
     private fun navigateToMain(email: String) {
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("nameSurname", getNameSurname(email))
         startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)
     }
 
+    /**
+     * Class for text field validation in real time.
+     */
     inner class TextFieldValidation(private val view: View) : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {/* no action */}
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {/* no action */}
+        override fun afterTextChanged(s: Editable?) {/* no action */
+        }
+
+        override fun beforeTextChanged(
+            s: CharSequence?, start: Int, count: Int, after: Int
+        ) {/* no action */
+        }
+
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             when (view) {
                 binding.textInputEditTextEmail -> {
@@ -120,10 +164,12 @@ class AuthActivity : AppCompatActivity() {
                     validatePassword()
                 }
             }
-
         }
     }
 
+    /**
+     * Method for validating email. Email should be not empty and satisfy EMAIL_ADDRESS pattern.
+     */
     private fun validateEmail(): Boolean {
         val email = binding.textInputEditTextEmail.text.toString()
         val isEmptyEmail = email.trim().isEmpty()
@@ -140,11 +186,16 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Method for validating password. Password should be not empty, should have at least 1 digit,
+     * 1 upper case letter and 1 lower case letter.
+     */
     private fun validatePassword(): Boolean {
         val password = binding.textInputEditTextPassword.text.toString()
         val isEmptyPassword = password.trim().isEmpty()
         return if (!isEmptyPassword && password.length >= 8 && password.any(Char::isDigit)
-            && password.any(Char::isLowerCase) && password.any(Char::isUpperCase)) {
+            && password.any(Char::isLowerCase) && password.any(Char::isUpperCase)
+        ) {
             binding.textInputLayoutPassword.isErrorEnabled = false
             true
         } else {

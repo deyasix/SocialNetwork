@@ -18,16 +18,16 @@
             android:text="@string/settings"
             android:textColor="@color/profileWhite"
             android:fontFamily="@font/open_sans"
-            android:textSize="26sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="15dp"/>
+            android:textSize="@dimen/max_text"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginStart="@dimen/padding_small"/>
         <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/photo_main"
+            android:layout_height="@dimen/photo_main"
             app:shapeAppearanceOverlay="@style/roundedImageView"
             android:src="@drawable/avatar"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="@dimen/padding_average"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewNameSurname"
             android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/open_sans"
             android:textSize="@dimen/nameSurnameTextSize"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="@dimen/padding_small"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,8 +45,8 @@
             android:textColor="@color/grey_text"
             android:layout_gravity="center"
             android:fontFamily="@font/open_sans"
-            android:textSize="16sp"
-            android:layout_margin="10dp"/>
+            android:textSize="@dimen/little_text"
+            android:layout_margin="@dimen/padding_small"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,8 +54,8 @@
             android:textColor="@color/grey_text"
             android:layout_gravity="center"
             android:fontFamily="@font/open_sans"
-            android:textSize="16sp"
-            android:layout_margin="5dp"/>
+            android:textSize="@dimen/little_text"
+            android:layout_margin="@dimen/padding_little"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,51 +67,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="80dp">
+            android:layout_marginVertical="@dimen/padding_big">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="15dp"
-                android:src="@drawable/ic_facebook"/>
+                android:layout_margin="@dimen/padding_average"
+                android:src="@drawable/ic_facebook"
+                android:contentDescription="@string/icon_facebook_description"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="15dp"
-                android:src="@drawable/ic_linkedin"/>
+                android:layout_margin="@dimen/padding_average"
+                android:src="@drawable/ic_linkedin"
+                android:contentDescription="@string/icon_linkedin_description"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="15dp"
-                android:src="@drawable/ic_instagram"/>
+                android:layout_margin="@dimen/padding_average"
+                android:src="@drawable/ic_instagram"
+                android:contentDescription="@string/icon_instagram_description"/>
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/edit_profile"
-            android:gravity="center"
             android:textColor="@color/grey"
-            android:textSize="16sp"
+            android:textSize="@dimen/little_text"
+            android:layout_gravity="center"
             android:background="@drawable/white_frame_button"
             android:fontFamily="@font/open_sans"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:textAllCaps="false"/>
-
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/round_shape_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/padding_big"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_gravity="center"
+            android:background="@drawable/orange_frame_button"
             android:fontFamily="@font/open_sans"
-            android:gravity="center"
             android:text="@string/view_contacts"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/small_text" />
     </LinearLayout>
-
-
 </LinearLayout>

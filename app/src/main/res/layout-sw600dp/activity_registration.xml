@@ -36,9 +36,11 @@
         android:layout_marginBottom="@dimen/padding_little">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextEmail"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/field_width_tablet"
+            android:layout_gravity="center"
             android:layout_height="@dimen/padding_big"
             android:textSize="@dimen/average_text"
+
             android:textColor="@color/profileWhite" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -55,7 +57,8 @@
         android:layout_marginBottom="@dimen/padding_little">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextPassword"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/field_width_tablet"
+            android:layout_gravity="center"
             android:layout_height="@dimen/padding_big"
             android:textSize="@dimen/average_text"
             android:textColor="@color/profileWhite"
@@ -73,13 +76,16 @@
         android:buttonTint="@color/white"
         android:textColor="@color/grey_text"
         android:paddingHorizontal="@dimen/padding_little"
-        android:layout_marginStart="@dimen/padding_small"/>
+        android:layout_gravity="center"
+        android:gravity="center"/>
     <LinearLayout
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/google_button_height"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/padding_average_double"
         android:background="@drawable/white_frame_button"
         android:orientation="horizontal"
         android:layout_marginTop="@dimen/padding_big"
+        android:layout_marginHorizontal="@dimen/padding_max"
+        android:paddingHorizontal="@dimen/google_button_tablet"
         android:layout_gravity="center"
         android:gravity="center">
         <ImageView
@@ -106,15 +112,16 @@
         android:layout_margin="@dimen/padding_little"
         android:gravity="center"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_register_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/registration_button"
         android:background="@drawable/logo_circle"
         android:text="@string/register"
-        android:textColor="@color/profileWhite"
         android:paddingHorizontal="@dimen/padding_max"
         android:layout_gravity="center"
-        android:textSize="@dimen/small_text"/>
+        android:textColor="@color/profileWhite"
+        android:textSize="@dimen/small_text"
+        android:layout_marginHorizontal="@dimen/padding_max"/>
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

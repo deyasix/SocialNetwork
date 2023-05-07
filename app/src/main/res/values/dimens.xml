@@ -2,10 +2,10 @@
 <resources>
     <dimen name="nameSurnameTextSize">20sp</dimen>
 
-    <dimen name="registration_little_text">16sp</dimen>
-    <dimen name="registration_small_text">18sp</dimen>
-    <dimen name="registration_average_text">20sp</dimen>
-    <dimen name="registration_max_text">26sp</dimen>
+    <dimen name="little_text">16sp</dimen>
+    <dimen name="small_text">18sp</dimen>
+    <dimen name="average_text">20sp</dimen>
+    <dimen name="max_text">26sp</dimen>
 
     <dimen name="padding_little">5dp</dimen>
     <dimen name="padding_small">10dp</dimen>
@@ -13,4 +13,13 @@
     <dimen name="padding_max">100dp</dimen>
     <dimen name="padding_big">50dp</dimen>
     <dimen name="padding_average_double">40dp</dimen>
+
+    <dimen name="photo_main">150dp</dimen>
+    <dimen name="photo_main_land">80dp</dimen>
+    <dimen name="icon_tablet">80dp</dimen>
+    <dimen name="field_width_tablet">480dp</dimen>
+    <dimen name="google_button_tablet">90dp</dimen>
+    <dimen name="button_register_height">55dp</dimen>
+    <dimen name="google_button_height">48dp</dimen>
+    <dimen name="button_width">320dp</dimen>
 </resources>
