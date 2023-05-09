@@ -10,21 +10,26 @@ import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
 import com.example.myprofilemarkup.databinding.ActivityRegistrationBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class AuthActivity : AppCompatActivity() {
+private const val PREFERENCE_NAME = "MyProfileMarkupPreference"
+private const val EMAIL = "EMAIL"
 
-    companion object {
-        const val PREFERENCE_NAME = "MyProfileMarkupPreference"
-    }
+class AuthActivity : AppCompatActivity() {
+//    companion object {
+//        const val PREFERENCE_NAME = "MyProfileMarkupPreference"
+//    }
 
     private lateinit var binding: ActivityRegistrationBinding
+//    private val binding: ActivityRegistrationBinding by lazy {ActivityRegistrationBinding.inflate(layoutInflater)}
 
     private val dataStore by preferencesDataStore(PREFERENCE_NAME)
 
@@ -41,7 +46,7 @@ class AuthActivity : AppCompatActivity() {
     ) {
         super.onRestoreInstanceState(savedInstanceState, persistentState)
         if (savedInstanceState != null) {
-            binding.textInputEditTextEmail.setText(savedInstanceState.getString("EMAIL"))
+            binding.textInputEditTextEmail.setText(savedInstanceState.getString(EMAIL))
             binding.textInputEditTextPassword.setText(savedInstanceState.getString("PASSWORD"))
             binding.checkBoxRemember.isChecked = savedInstanceState.getBoolean("REMEMBER")
         }
@@ -51,15 +56,16 @@ class AuthActivity : AppCompatActivity() {
      * Method that checks if user is log in or not. If user log in before, navigate to main screen.
      */
     private fun checkAutoLogin() {
-        lifecycleScope.launch {
-            try {
-                dataStore.data.map { preferences ->
-                    preferences[stringPreferencesKey("email")] ?: ""
+        lifecycleScope.launch(Dispatchers.IO) {
+//            try {
+//            Log.d(TAG, "withContext thread: ${Thread.currentThread().name}")
+            dataStore.data.map { preferences ->
+                    preferences[stringPreferencesKey(EMAIL)] ?: "" // TODO extract all literals to constants
                 }
                     .collect { if (it.isNotEmpty()) navigateToMain(it) }
-            } catch (ex: Throwable) {
-                Log.e(ex.message, ex.toString())
-            }
+//            } catch (ex: Throwable) {
+//                Log.e(TAG, ex.toString())
+//            }
         }
     }
 
@@ -68,7 +74,7 @@ class AuthActivity : AppCompatActivity() {
      */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("EMAIL", binding.textInputEditTextEmail.text.toString())
+        outState.putString(EMAIL, binding.textInputEditTextEmail.text.toString())
         outState.putString("PASSWORD", binding.textInputEditTextPassword.text.toString())
         outState.putBoolean("REMEMBER", binding.checkBoxRemember.isChecked)
     }
@@ -81,10 +87,10 @@ class AuthActivity : AppCompatActivity() {
         if (isValidate()) {
             val email = binding.textInputEditTextEmail.text.toString()
             if (binding.checkBoxRemember.isChecked) {
-                lifecycleScope.launch {
+                lifecycleScope.launch {// TODO add storing password to datastore
                     try {
                         dataStore.edit { settings ->
-                            settings[stringPreferencesKey("email")] = email
+                            settings[stringPreferencesKey(EMAIL)] = email
                         }
                     } catch (ex: Throwable) {
                         Log.e(ex.message, ex.toString())
@@ -108,7 +114,7 @@ class AuthActivity : AppCompatActivity() {
         return if (splitEmail.contains(".")) {
             val nameSurname = splitEmail.split(".")
             val (name, surname) = Pair(nameSurname[0], nameSurname[1])
-            name.replaceFirstChar { it.uppercase() } + " " + surname.replaceFirstChar { it.uppercase() }
+            name.replaceFirstChar { it.uppercase() } + ' ' + surname.replaceFirstChar { it.uppercase() }
         } else splitEmail.replaceFirstChar { it.uppercase() }
     }
 
@@ -123,13 +129,30 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        binding.textInputEditTextEmail.addTextChangedListener(
-            TextFieldValidation(binding.textInputEditTextEmail)
-        )
-        binding.textInputEditTextPassword.addTextChangedListener(
-            TextFieldValidation(binding.textInputEditTextPassword)
-        )
+        setListenerToEmailEditText()
+        setListenerToPasswordEditText()
+        setListenerToRegisterButton()
+    }
+
+    private fun setListenerToRegisterButton() {
         binding.registrationButton.setOnClickListener { registrationButtonClickEvent() }
+    }
+
+    private fun setListenerToPasswordEditText() {
+//        binding.textInputEditTextPassword.addTextChangedListener(
+//            TextFieldValidation(binding.textInputEditTextPassword)
+//        )
+        binding.textInputEditTextPassword.doOnTextChanged{ _,_,_,_ -> // TODO here was changed, need to change for email
+            validatePassword()
+        }
+    }
+
+    private fun setListenerToEmailEditText() {
+        with(binding) { // ← scope function with
+            textInputEditTextEmail.addTextChangedListener(
+                TextFieldValidation(textInputEditTextEmail)
+            )
+        }
     }
 
     /**
@@ -140,6 +163,7 @@ class AuthActivity : AppCompatActivity() {
         intent.putExtra("nameSurname", getNameSurname(email))
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)
+        finish()
     }
 
     /**
@@ -173,7 +197,7 @@ class AuthActivity : AppCompatActivity() {
     private fun validateEmail(): Boolean {
         val email = binding.textInputEditTextEmail.text.toString()
         val isEmptyEmail = email.trim().isEmpty()
-        return if (!isEmptyEmail && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        return if (!isEmptyEmail && Patterns.EMAIL_ADDRESS.matcher(email).matches()) { // TODO maybe extract logic to separated functions
             binding.textInputLayoutEmail.isErrorEnabled = false
             true
         } else {

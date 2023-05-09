@@ -57,6 +57,7 @@
             android:textSize="@dimen/little_text"
             android:layout_margin="@dimen/padding_little"/>
     </LinearLayout>
+    <!-- Change ImageView with AppCompatImageView -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -88,8 +89,9 @@
                 android:contentDescription="@string/icon_instagram_description"/>
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="@dimen/button_width"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:text="@string/edit_profile"
             android:textColor="@color/grey"
             android:textSize="@dimen/little_text"
