@@ -13,7 +13,7 @@
             android:text="@string/registration_header"
             android:textColor="@color/profileWhite"
             android:textSize="@dimen/max_text"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:layout_marginTop="@dimen/padding_average_double"
             android:gravity="center"/>
         <androidx.appcompat.widget.AppCompatTextView
@@ -22,7 +22,7 @@
             android:text="@string/fill_out_profile"
             android:textColor="@color/grey_text"
             android:textSize="@dimen/little_text"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:layout_margin="@dimen/padding_small"
             android:gravity="center"/>
         <com.google.android.material.textfield.TextInputLayout
@@ -70,7 +70,7 @@
             android:buttonTint="@color/white"
             android:textColor="@color/grey_text"
             android:layout_marginStart="@dimen/padding_average"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:textSize="@dimen/small_text"
             android:paddingHorizontal="@dimen/padding_small"/>
         <LinearLayout
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/google"
                 android:textSize="@dimen/small_text"
-                android:fontFamily="@font/open_sans"
+                android:fontFamily="@font/open_sans_semi_bold"
                 android:textColor="@color/black"
                 />
         </LinearLayout>
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:text="@string/or"
             android:textColor="@color/profileWhite"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:textSize="@dimen/average_text"
             android:layout_margin="@dimen/padding_little"
             android:gravity="center"/>
@@ -110,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/registration_button"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:background="@drawable/logo_circle"
             android:text="@string/register"
             android:textColor="@color/profileWhite"
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_in"
                 android:textColor="@color/profileWhite"
-                android:fontFamily="@font/open_sans"
+                android:fontFamily="@font/open_sans_semi_bold"
                 android:textSize="@dimen/little_text"/>
         </LinearLayout>
     </LinearLayout>

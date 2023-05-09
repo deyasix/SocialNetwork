@@ -1,4 +1,4 @@
-package com.example.myprofilemarkup
+package com.example.myprofilemarkup.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

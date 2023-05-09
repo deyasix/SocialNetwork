@@ -1,113 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:background="?attr/colorPrimary">
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings"
-            android:textColor="@color/profileWhite"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/max_text"
-            android:layout_marginTop="@dimen/padding_small"
-            android:layout_marginStart="@dimen/padding_small"/>
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="@dimen/photo_main"
-            android:layout_height="@dimen/photo_main"
-            app:shapeAppearanceOverlay="@style/roundedImageView"
-            android:src="@drawable/avatar"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/padding_average"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewNameSurname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nameSurname"
-            android:textColor="@color/profileWhite"
-            android:layout_gravity="center"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/nameSurnameTextSize"
-            android:layout_marginTop="@dimen/padding_small"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/career"
-            android:textColor="@color/grey_text"
-            android:layout_gravity="center"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/little_text"
-            android:layout_margin="@dimen/padding_small"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/address"
-            android:textColor="@color/grey_text"
-            android:layout_gravity="center"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/little_text"
-            android:layout_margin="@dimen/padding_little"/>
-    </LinearLayout>
-    <!-- Change ImageView with AppCompatImageView -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:background="?attr/colorSecondary">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginVertical="@dimen/padding_big">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/padding_average"
-                android:src="@drawable/ic_facebook"
-                android:contentDescription="@string/icon_facebook_description"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/padding_average"
-                android:src="@drawable/ic_linkedin"
-                android:contentDescription="@string/icon_linkedin_description"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/padding_average"
-                android:src="@drawable/ic_instagram"
-                android:contentDescription="@string/icon_instagram_description"/>
-        </LinearLayout>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/edit_profile"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/little_text"
-            android:layout_gravity="center"
-            android:background="@drawable/white_frame_button"
-            android:fontFamily="@font/open_sans"
-            android:textAllCaps="false"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="@dimen/button_width"
-            android:layout_height="@dimen/padding_big"
-            android:layout_marginTop="@dimen/padding_small"
-            android:layout_gravity="center"
-            android:background="@drawable/orange_frame_button"
-            android:fontFamily="@font/open_sans"
-            android:text="@string/view_contacts"
-            android:textColor="@color/white"
-            android:textSize="@dimen/small_text" />
-    </LinearLayout>
-</LinearLayout>
+    android:background="?attr/colorPrimary">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewSettings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding_standard"
+        android:layout_marginTop="@dimen/padding_small"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:text="@string/settings"
+        android:textColor="@color/profileWhite"
+        android:textSize="@dimen/max_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewPhoto"
+        android:layout_width="@dimen/photo_main"
+        android:layout_height="@dimen/photo_main"
+        android:layout_marginTop="@dimen/padding_average_double"
+        android:layout_marginBottom="@dimen/padding_average"
+        android:src="@drawable/avatar"
+        app:layout_constraintBottom_toTopOf="@id/textViewNameSurname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewSettings"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewNameSurname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding_standard"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:gravity="center"
+        android:paddingTop="@dimen/padding_small"
+        android:text="@string/nameSurname"
+        android:textColor="@color/profileWhite"
+        android:textSize="@dimen/nameSurnameTextSize"
+        app:layout_constraintBottom_toTopOf="@id/textViewCareer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewPhoto" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewCareer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/padding_standard"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:gravity="center"
+        android:padding="@dimen/padding_small"
+        android:text="@string/career"
+        android:textColor="@color/grey_text"
+        android:textSize="@dimen/little_text"
+        app:layout_constraintBottom_toTopOf="@id/textViewAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewNameSurname" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding_standard"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding_big"
+        android:text="@string/address"
+        android:textColor="@color/grey_text"
+        android:textSize="@dimen/little_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewCareer" />
+
+    <ImageView
+        android:id="@+id/imageViewFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_average"
+        android:contentDescription="@string/icon_facebook_description"
+        android:src="@drawable/ic_facebook"
+        app:layout_constraintBottom_toTopOf="@id/buttonEditProfile"
+        app:layout_constraintEnd_toStartOf="@id/imageViewLinkedIn"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
+
+    <ImageView
+        android:id="@+id/imageViewLinkedIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_average"
+        android:contentDescription="@string/icon_linkedin_description"
+        android:src="@drawable/ic_linkedin"
+        app:layout_constraintBottom_toTopOf="@id/buttonEditProfile"
+        app:layout_constraintEnd_toStartOf="@id/imageViewInstagram"
+        app:layout_constraintStart_toEndOf="@id/imageViewFacebook"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
+
+    <ImageView
+        android:id="@+id/imageViewInstagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_average"
+        android:contentDescription="@string/icon_instagram_description"
+        android:src="@drawable/ic_instagram"
+        app:layout_constraintBottom_toTopOf="@id/buttonEditProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewLinkedIn"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonEditProfile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/padding_standard"
+        android:background="@drawable/white_frame_button"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:text="@string/edit_profile"
+        android:textAllCaps="false"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/little_text"
+        app:layout_constraintBottom_toTopOf="@id/buttonViewMyContacts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonViewMyContacts"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/padding_big"
+        android:layout_margin="@dimen/padding_standard"
+        android:background="@drawable/orange_frame_button"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:text="@string/view_contacts"
+        android:textColor="@color/white"
+        android:textSize="@dimen/small_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="@string/settings"
             android:textColor="@color/profileWhite"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:textSize="@dimen/max_text"
             android:layout_marginTop="@dimen/padding_small"
             android:layout_marginStart="@dimen/padding_small"/>
@@ -34,7 +34,7 @@
             android:text="@string/nameSurname"
             android:textColor="@color/profileWhite"
             android:layout_gravity="center"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:textSize="@dimen/nameSurnameTextSize"
             android:layout_marginTop="@dimen/padding_little"/>
         <androidx.appcompat.widget.AppCompatTextView
@@ -43,7 +43,7 @@
             android:text="@string/career"
             android:textColor="@color/grey_text"
             android:layout_gravity="center"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:textSize="@dimen/little_text"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
             android:text="@string/address"
             android:textColor="@color/grey_text"
             android:layout_gravity="center"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:textSize="@dimen/little_text"/>
     </LinearLayout>
     <LinearLayout
@@ -97,7 +97,7 @@
             android:textColor="@color/grey"
             android:textSize="@dimen/little_text"
             android:background="@drawable/white_frame_button"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:textAllCaps="false"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="@dimen/button_width"
@@ -105,7 +105,7 @@
             android:layout_marginTop="@dimen/padding_small"
             android:layout_gravity="center"
             android:background="@drawable/orange_frame_button"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:text="@string/view_contacts"
             android:textColor="@color/white"
             android:textSize="@dimen/small_text" />

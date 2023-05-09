@@ -11,7 +11,7 @@
         android:text="@string/registration_header"
         android:textColor="@color/profileWhite"
         android:textSize="@dimen/max_text"
-        android:fontFamily="@font/open_sans"
+        android:fontFamily="@font/open_sans_semi_bold"
         android:paddingTop="@dimen/padding_big"
         android:layout_marginTop="@dimen/padding_max"
         android:gravity="center"/>
@@ -21,7 +21,7 @@
         android:text="@string/fill_out_profile"
         android:textColor="@color/grey_text"
         android:textSize="@dimen/little_text"
-        android:fontFamily="@font/open_sans"
+        android:fontFamily="@font/open_sans_semi_bold"
         android:layout_margin="@dimen/padding_small"
         android:gravity="center"/>
     <com.google.android.material.textfield.TextInputLayout
@@ -68,7 +68,7 @@
         android:layout_height="@dimen/padding_big"
         android:text="@string/remember_me"
         android:checked="true"
-        android:fontFamily="@font/open_sans"
+        android:fontFamily="@font/open_sans_semi_bold"
         android:textSize="@dimen/small_text"
         android:button="@drawable/checkbox_selector"
         android:buttonTint="@color/white"
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:text="@string/google"
             android:textSize="@dimen/small_text"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_semi_bold"
             android:textColor="@color/black" />
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatTextView
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:text="@string/or"
         android:textColor="@color/profileWhite"
-        android:fontFamily="@font/open_sans"
+        android:fontFamily="@font/open_sans_semi_bold"
         android:textSize="@dimen/average_text"
         android:layout_margin="@dimen/padding_little"
         android:gravity="center"/>
@@ -135,13 +135,13 @@
             android:textColor="@color/grey_text"
             android:textSize="@dimen/little_text"
             android:layout_marginEnd="@dimen/padding_small"
-            android:fontFamily="@font/open_sans" />
+            android:fontFamily="@font/open_sans_semi_bold" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
             android:textSize="@dimen/little_text"
             android:textColor="@color/profileWhite"
-            android:fontFamily="@font/open_sans"/>
+            android:fontFamily="@font/open_sans_semi_bold"/>
     </LinearLayout>
 </LinearLayout>
