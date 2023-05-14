@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimary">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52" />
 
     <View
         android:layout_width="0dp"
@@ -13,49 +47,46 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
+        app:layout_constraintTop_toBottomOf="@id/guideLineCenter" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewSettings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/padding_standard"
-        android:layout_marginTop="@dimen/padding_small"
         android:fontFamily="@font/open_sans_semi_bold"
         android:text="@string/settings"
         android:textColor="@color/profileWhite"
-        android:textSize="@dimen/max_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="@dimen/text_size_settings"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toTopOf="@id/guideLineTop" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewPhoto"
         android:layout_width="@dimen/photo_main"
         android:layout_height="@dimen/photo_main"
-        android:layout_marginTop="@dimen/padding_average_double"
-        android:layout_marginBottom="@dimen/padding_average"
+        android:layout_marginTop="@dimen/margin_top_photo"
         android:src="@drawable/avatar"
         app:layout_constraintBottom_toTopOf="@id/textViewNameSurname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
         app:layout_constraintTop_toBottomOf="@id/textViewSettings"
+        app:layout_constraintVertical_chainStyle="packed"
         app:shapeAppearanceOverlay="@style/roundedImageView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewNameSurname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/padding_standard"
+        android:layout_marginTop="@dimen/margin_top_name_surname"
         android:fontFamily="@font/open_sans_semi_bold"
         android:gravity="center"
-        android:paddingTop="@dimen/padding_small"
         android:text="@string/nameSurname"
         android:textColor="@color/profileWhite"
-        android:textSize="@dimen/nameSurnameTextSize"
+        android:textSize="@dimen/text_size_name_surname"
         app:layout_constraintBottom_toTopOf="@id/textViewCareer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
         app:layout_constraintTop_toBottomOf="@id/imageViewPhoto" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -63,100 +94,98 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginHorizontal="@dimen/padding_standard"
+        android:layout_marginTop="@dimen/margin_top_career"
         android:fontFamily="@font/open_sans_semi_bold"
         android:gravity="center"
-        android:padding="@dimen/padding_small"
         android:text="@string/career"
         android:textColor="@color/grey_text"
-        android:textSize="@dimen/little_text"
+        android:textSize="@dimen/text_size_career_address"
         app:layout_constraintBottom_toTopOf="@id/textViewAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/textViewNameSurname"
+        app:layout_constraintStart_toStartOf="@id/textViewNameSurname"
         app:layout_constraintTop_toBottomOf="@id/textViewNameSurname" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/padding_standard"
+        android:layout_marginTop="@dimen/margin_top_address"
+        android:layout_marginBottom="@dimen/margin_bottom_address"
         android:fontFamily="@font/open_sans_semi_bold"
         android:gravity="center"
-        android:paddingBottom="@dimen/padding_big"
         android:text="@string/address"
         android:textColor="@color/grey_text"
-        android:textSize="@dimen/little_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/text_size_career_address"
+        app:layout_constraintBottom_toTopOf="@id/guideLineCenter"
+        app:layout_constraintEnd_toEndOf="@id/textViewCareer"
+        app:layout_constraintStart_toStartOf="@id/textViewCareer"
         app:layout_constraintTop_toBottomOf="@id/textViewCareer" />
 
     <ImageView
         android:id="@+id/imageViewFacebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_average"
+        android:layout_margin="@dimen/margin_icons"
         android:contentDescription="@string/icon_facebook_description"
         android:src="@drawable/ic_facebook"
         app:layout_constraintBottom_toTopOf="@id/buttonEditProfile"
         app:layout_constraintEnd_toStartOf="@id/imageViewLinkedIn"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/guideLineCenter" />
 
     <ImageView
         android:id="@+id/imageViewLinkedIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_average"
+        android:layout_margin="@dimen/margin_icons"
         android:contentDescription="@string/icon_linkedin_description"
         android:src="@drawable/ic_linkedin"
         app:layout_constraintBottom_toTopOf="@id/buttonEditProfile"
         app:layout_constraintEnd_toStartOf="@id/imageViewInstagram"
         app:layout_constraintStart_toEndOf="@id/imageViewFacebook"
-        app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
+        app:layout_constraintTop_toBottomOf="@id/guideLineCenter" />
 
     <ImageView
         android:id="@+id/imageViewInstagram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_average"
+        android:layout_margin="@dimen/margin_icons"
         android:contentDescription="@string/icon_instagram_description"
         android:src="@drawable/ic_instagram"
         app:layout_constraintBottom_toTopOf="@id/buttonEditProfile"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
         app:layout_constraintStart_toEndOf="@id/imageViewLinkedIn"
-        app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
+        app:layout_constraintTop_toBottomOf="@id/guideLineCenter" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonEditProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/padding_standard"
+        android:layout_marginBottom="@dimen/margin_bottom_button_edit_profile"
         android:background="@drawable/white_frame_button"
         android:fontFamily="@font/open_sans_semi_bold"
         android:text="@string/edit_profile"
         android:textAllCaps="false"
         android:textColor="@color/grey"
-        android:textSize="@dimen/little_text"
+        android:textSize="@dimen/text_size_button_edit_profile"
         app:layout_constraintBottom_toTopOf="@id/buttonViewMyContacts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonViewMyContacts"
         android:layout_width="0dp"
-        android:layout_height="@dimen/padding_big"
-        android:layout_margin="@dimen/padding_standard"
+        android:layout_height="@dimen/button_view_my_contacts_height"
         android:background="@drawable/orange_frame_button"
         android:fontFamily="@font/open_sans_semi_bold"
         android:text="@string/view_contacts"
         android:textColor="@color/white"
-        android:textSize="@dimen/small_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        android:textSize="@dimen/text_size_button_view_my_contacts"
+        app:layout_constraintBottom_toBottomOf="@id/guideLineBottom"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

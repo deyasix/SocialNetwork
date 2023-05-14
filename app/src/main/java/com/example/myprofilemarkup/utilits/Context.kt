@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 
-const val PREFERENCE_NAME = "MyProfileMarkupPreference"
-private val Context.dataStore by preferencesDataStore(PREFERENCE_NAME)
+
+private val Context.dataStore by preferencesDataStore(Constants.PREFERENCE_NAME)
 private const val EMPTY_STRING = ""
 
 suspend fun Context.saveData(key: String, value: String) {

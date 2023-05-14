@@ -10,17 +10,12 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.example.myprofilemarkup.R
 import com.example.myprofilemarkup.databinding.ActivityRegistrationBinding
+import com.example.myprofilemarkup.utilits.Constants
 import com.example.myprofilemarkup.utilits.getDataValue
 import com.example.myprofilemarkup.utilits.saveData
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-private const val EMAIL = "EMAIL"
-private const val PASSWORD = "PASSWORD"
-private const val REMEMBER = "REMEMBER"
-private const val AT_SIGN = '@'
-private const val WHITESPACE_SYMBOL = ' '
-private const val DOT_SYMBOL = '.'
+
 
 class AuthActivity : AppCompatActivity() {
 
@@ -40,9 +35,9 @@ class AuthActivity : AppCompatActivity() {
     ) {
         super.onRestoreInstanceState(savedInstanceState, persistentState)
         if (savedInstanceState != null) {
-            binding.textInputEditTextEmail.setText(savedInstanceState.getString(EMAIL))
-            binding.textInputEditTextPassword.setText(savedInstanceState.getString(PASSWORD))
-            binding.checkBoxRemember.isChecked = savedInstanceState.getBoolean(REMEMBER)
+            binding.textInputEditTextEmail.setText(savedInstanceState.getString(Constants.EMAIL))
+            binding.textInputEditTextPassword.setText(savedInstanceState.getString(Constants.PASSWORD))
+            binding.checkBoxRemember.isChecked = savedInstanceState.getBoolean(Constants.REMEMBER)
         }
     }
 
@@ -51,8 +46,8 @@ class AuthActivity : AppCompatActivity() {
      */
     private fun checkAutoLogin() {
         lifecycleScope.launch {
-            val email = getDataValue(EMAIL)
-            val password = getDataValue(PASSWORD)
+            val email = getDataValue(Constants.EMAIL)
+            val password = getDataValue(Constants.PASSWORD)
             if (email.isNotEmpty() && password.isNotEmpty()) navigateToMain(email)
         }
     }
@@ -62,9 +57,9 @@ class AuthActivity : AppCompatActivity() {
      */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(EMAIL, binding.textInputEditTextEmail.text.toString())
-        outState.putString(PASSWORD, binding.textInputEditTextPassword.text.toString())
-        outState.putBoolean(REMEMBER, binding.checkBoxRemember.isChecked)
+        outState.putString(Constants.EMAIL, binding.textInputEditTextEmail.text.toString())
+        outState.putString(Constants.PASSWORD, binding.textInputEditTextPassword.text.toString())
+        outState.putBoolean(Constants.REMEMBER, binding.checkBoxRemember.isChecked)
     }
 
     /**
@@ -76,9 +71,9 @@ class AuthActivity : AppCompatActivity() {
             val email = binding.textInputEditTextEmail.text.toString()
             val password = binding.textInputEditTextPassword.text.toString()
             if (binding.checkBoxRemember.isChecked) {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    saveData(EMAIL, email)
-                    saveData(PASSWORD, password)
+                lifecycleScope.launch {
+                    saveData(Constants.EMAIL, email)
+                    saveData(Constants.PASSWORD, password)
                 }
             }
             navigateToMain(email)
@@ -94,11 +89,11 @@ class AuthActivity : AppCompatActivity() {
      * Method that gets name and surname from email (parsing).
      */
     private fun getNameSurname(email: String): String {
-        val splitEmail = email.split(AT_SIGN)[0]
-        return if (splitEmail.contains(DOT_SYMBOL)) {
-            val nameSurname = splitEmail.split(DOT_SYMBOL)
+        val splitEmail = email.split(Constants.AT_SIGN)[0]
+        return if (splitEmail.contains(Constants.DOT_SYMBOL)) {
+            val nameSurname = splitEmail.split(Constants.DOT_SYMBOL)
             val (name, surname) = Pair(nameSurname[0], nameSurname[1])
-            name.replaceFirstChar { it.uppercase() } + WHITESPACE_SYMBOL +
+            name.replaceFirstChar { it.uppercase() } + Constants.WHITESPACE_SYMBOL +
                     surname.replaceFirstChar { it.uppercase() }
         } else splitEmail.replaceFirstChar { it.uppercase() }
     }
@@ -136,7 +131,7 @@ class AuthActivity : AppCompatActivity() {
      */
     private fun navigateToMain(email: String) {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("nameSurname", getNameSurname(email))
+        intent.putExtra(Constants.NAME_SURNAME, getNameSurname(email))
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)
         finish()
