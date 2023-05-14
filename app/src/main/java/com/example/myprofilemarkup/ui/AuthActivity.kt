@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Patterns
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
@@ -11,13 +12,19 @@ import androidx.lifecycle.lifecycleScope
 import com.example.myprofilemarkup.R
 import com.example.myprofilemarkup.databinding.ActivityRegistrationBinding
 import com.example.myprofilemarkup.utilits.Constants
+import com.example.myprofilemarkup.utilits.Constants.EMAIL
+import com.example.myprofilemarkup.utilits.Constants.PASSWORD
+import com.example.myprofilemarkup.utilits.Constants.REMEMBER
+import com.example.myprofilemarkup.utilits.ext.hideSoftKeyboard
 import com.example.myprofilemarkup.utilits.getDataValue
 import com.example.myprofilemarkup.utilits.saveData
 import kotlinx.coroutines.launch
 
 
-
 class AuthActivity : AppCompatActivity() {
+
+//    private val job = Job()
+//    private val coroutineScope = CoroutineScope(Dispatchers.IO + job)
 
     private val binding: ActivityRegistrationBinding by lazy {
         ActivityRegistrationBinding.inflate(layoutInflater)
@@ -35,20 +42,9 @@ class AuthActivity : AppCompatActivity() {
     ) {
         super.onRestoreInstanceState(savedInstanceState, persistentState)
         if (savedInstanceState != null) {
-            binding.textInputEditTextEmail.setText(savedInstanceState.getString(Constants.EMAIL))
-            binding.textInputEditTextPassword.setText(savedInstanceState.getString(Constants.PASSWORD))
-            binding.checkBoxRemember.isChecked = savedInstanceState.getBoolean(Constants.REMEMBER)
-        }
-    }
-
-    /**
-     * Method that checks if user is log in or not. If user log in before, navigate to main screen.
-     */
-    private fun checkAutoLogin() {
-        lifecycleScope.launch {
-            val email = getDataValue(Constants.EMAIL)
-            val password = getDataValue(Constants.PASSWORD)
-            if (email.isNotEmpty() && password.isNotEmpty()) navigateToMain(email)
+            binding.textInputEditTextEmail.setText(savedInstanceState.getString(EMAIL))
+            binding.textInputEditTextPassword.setText(savedInstanceState.getString(PASSWORD))
+            binding.checkBoxRemember.isChecked = savedInstanceState.getBoolean(REMEMBER)
         }
     }
 
@@ -57,9 +53,20 @@ class AuthActivity : AppCompatActivity() {
      */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(Constants.EMAIL, binding.textInputEditTextEmail.text.toString())
-        outState.putString(Constants.PASSWORD, binding.textInputEditTextPassword.text.toString())
-        outState.putBoolean(Constants.REMEMBER, binding.checkBoxRemember.isChecked)
+        outState.putString(EMAIL, binding.textInputEditTextEmail.text.toString())
+        outState.putString(PASSWORD, binding.textInputEditTextPassword.text.toString())
+        outState.putBoolean(REMEMBER, binding.checkBoxRemember.isChecked)
+    }
+
+    /**
+     * Method that checks if user is log in or not. If user log in before, navigate to main screen.
+     */
+    private fun checkAutoLogin() {
+        lifecycleScope.launch {
+            val email = getDataValue(EMAIL)
+            val password = getDataValue(PASSWORD)
+            if (email.isNotEmpty() && password.isNotEmpty()) navigateToMain(email)
+        }
     }
 
     /**
@@ -72,11 +79,10 @@ class AuthActivity : AppCompatActivity() {
             val password = binding.textInputEditTextPassword.text.toString()
             if (binding.checkBoxRemember.isChecked) {
                 lifecycleScope.launch {
-                    saveData(Constants.EMAIL, email)
-                    saveData(Constants.PASSWORD, password)
+                    saveData(EMAIL, email)
+                    saveData(PASSWORD, password)
                 }
             }
-            navigateToMain(email)
         } else {
             Toast.makeText(
                 this,
@@ -109,9 +115,16 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
+        setScreenClickListener()
         setListenerToEmailEditText()
         setListenerToPasswordEditText()
         setListenerToRegisterButton()
+    }
+
+    private fun setScreenClickListener() {
+        binding.root.setOnClickListener {
+            hideSoftKeyboard()
+        }
     }
 
     private fun setListenerToRegisterButton() {
@@ -124,6 +137,20 @@ class AuthActivity : AppCompatActivity() {
 
     private fun setListenerToEmailEditText() {
         binding.textInputEditTextEmail.doOnTextChanged { _, _, _, _ -> validateEmail() }
+        binding.textInputEditTextPassword.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                v.hideSoftKeyboard()
+                true
+            } else {
+                false
+            }
+        }
+        binding.textInputEditTextPassword.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                // hide the keyboard
+                v.hideSoftKeyboard()
+            }
+        }
     }
 
     /**
@@ -175,10 +202,10 @@ class AuthActivity : AppCompatActivity() {
     private fun showPasswordError(password: String) {
         val isEmptyPassword = password.trim().isEmpty()
         binding.textInputLayoutPassword.error = when {
-            isEmptyPassword -> resources.getString(R.string.required_field)
-            password.length < 8 -> resources.getString(R.string.password_size)
-            password.none(Char::isDigit) -> resources.getString(R.string.required_digit_password)
-            else -> resources.getString(R.string.password_rules)
+            isEmptyPassword -> getString(R.string.required_field)
+            password.length < 8 -> getString(R.string.password_size)
+            password.none(Char::isDigit) -> getString(R.string.required_digit_password)
+            else -> getString(R.string.password_rules)
         }
         if (!isEmptyPassword) binding.textInputEditTextPassword.requestFocus()
     }

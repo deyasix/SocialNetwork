@@ -91,6 +91,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextEmail"
             android:layout_width="match_parent"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_semi_bold"
             android:textColor="@color/profileWhite"
@@ -119,6 +121,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_semi_bold"
             android:inputType="textPassword"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
             android:textColor="@color/profileWhite"
             android:textSize="@dimen/text_size_fields" />
     </com.google.android.material.textfield.TextInputLayout>

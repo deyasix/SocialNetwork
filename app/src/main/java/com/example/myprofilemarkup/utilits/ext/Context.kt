@@ -7,10 +7,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
-
-
 private val Context.dataStore by preferencesDataStore(Constants.PREFERENCE_NAME)
-private const val EMPTY_STRING = ""
 
 suspend fun Context.saveData(key: String, value: String) {
     dataStore.edit { settings ->
@@ -20,6 +17,6 @@ suspend fun Context.saveData(key: String, value: String) {
 
 suspend fun Context.getDataValue(key: String): String {
     return dataStore.data.map { preferences ->
-        preferences[stringPreferencesKey(key)] ?: EMPTY_STRING
+        preferences[stringPreferencesKey(key)].orEmpty()
     }.first { it.isNotEmpty() }
 }

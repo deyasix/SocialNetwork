@@ -121,7 +121,7 @@
         app:layout_constraintStart_toStartOf="@id/textViewCareer"
         app:layout_constraintTop_toBottomOf="@id/textViewCareer" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageViewFacebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
         app:layout_constraintStart_toStartOf="@id/guideLineLeft"
         app:layout_constraintTop_toBottomOf="@id/guideLineCenter" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageViewLinkedIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
         app:layout_constraintStart_toEndOf="@id/imageViewFacebook"
         app:layout_constraintTop_toBottomOf="@id/guideLineCenter" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageViewInstagram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -157,6 +157,15 @@
         app:layout_constraintEnd_toEndOf="@id/guideLineRight"
         app:layout_constraintStart_toEndOf="@id/imageViewLinkedIn"
         app:layout_constraintTop_toBottomOf="@id/guideLineCenter" />
+
+    <!--
+    LinearLayout>
+        androidx.appcompat.widget.AppCompatImageView
+        androidx.appcompat.widget.AppCompatImageView
+        androidx.appcompat.widget.AppCompatImageView
+    </>
+
+    -->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonEditProfile"

@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.textViewNameSurname.text = this.intent.getStringExtra(Constants.NAME_SURNAME)
+        binding.textViewNameSurname.text = intent.getStringExtra(Constants.NAME_SURNAME)
     }
 }
