@@ -153,7 +153,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideLineButtons"
         app:layout_constraintVertical_chainStyle="packed">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/google_icon_size"
             android:layout_height="@dimen/google_icon_size"
             android:layout_marginEnd="@dimen/margin_end_google_icon"
@@ -166,6 +166,7 @@
             android:fontFamily="@font/open_sans_semi_bold"
             android:text="@string/google"
             android:textColor="@color/black"
+            android:textAllCaps="true"
             android:textSize="@dimen/text_size_button_google" />
     </LinearLayout>
 

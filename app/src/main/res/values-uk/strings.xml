@@ -8,7 +8,7 @@
     <string name="career">Кар\'єра</string>
     <string name="address">Адреса</string>
     <string name="edit_profile">Редагувати профіль</string>
-    <string name="view_contacts">ПЕРЕГЛЯНУТИ МОЇ КОНТАКТИ</string>
+    <string name="view_contacts">Переглянути мої контакти</string>
     <string name="icon_facebook_description">Іконка Фейсбук</string>
     <string name="icon_instagram_description">Іконка Інстаграм</string>
     <string name="icon_linkedin_description">Іконка Лінкедін</string>
@@ -19,8 +19,8 @@
     <string name="email">Електронна пошта</string>
     <string name="password">Пароль</string>
     <string name="remember_me">Запам\'ятати мене</string>
-    <string name="google">GOOGLE</string>
-    <string name="register">ЗАРЕЄСТРУВАТИСЯ</string>
+    <string name="google">Google</string>
+    <string name="register">Зареєструватися</string>
     <string name="about_terms_and_conditions">Натискаючи Зареєструватися ви погодуєтесь з Умовами використання</string>
     <string name="have_an_account">Вже маєте акаунт?</string>
     <string name="sign_in">Увійти</string>

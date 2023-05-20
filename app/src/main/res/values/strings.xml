@@ -18,8 +18,8 @@
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="remember_me">Remember me</string>
-    <string name="google">GOOGLE</string>
-    <string name="register">REGISTER</string>
+    <string name="google">Google</string>
+    <string name="register">Register</string>
     <string name="about_terms_and_conditions">By clicking Register you agree to our Terms and Conditions</string>
     <string name="have_an_account">Already have an account?</string>
     <string name="sign_in">Sign in</string>

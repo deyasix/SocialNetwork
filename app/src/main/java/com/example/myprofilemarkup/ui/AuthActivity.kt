@@ -16,15 +16,12 @@ import com.example.myprofilemarkup.utilits.Constants.EMAIL
 import com.example.myprofilemarkup.utilits.Constants.PASSWORD
 import com.example.myprofilemarkup.utilits.Constants.REMEMBER
 import com.example.myprofilemarkup.utilits.ext.hideSoftKeyboard
-import com.example.myprofilemarkup.utilits.getDataValue
-import com.example.myprofilemarkup.utilits.saveData
+import com.example.myprofilemarkup.utilits.ext.getDataValue
+import com.example.myprofilemarkup.utilits.ext.saveData
 import kotlinx.coroutines.launch
 
 
 class AuthActivity : AppCompatActivity() {
-
-//    private val job = Job()
-//    private val coroutineScope = CoroutineScope(Dispatchers.IO + job)
 
     private val binding: ActivityRegistrationBinding by lazy {
         ActivityRegistrationBinding.inflate(layoutInflater)
@@ -83,6 +80,7 @@ class AuthActivity : AppCompatActivity() {
                     saveData(PASSWORD, password)
                 }
             }
+            navigateToMain(email)
         } else {
             Toast.makeText(
                 this,

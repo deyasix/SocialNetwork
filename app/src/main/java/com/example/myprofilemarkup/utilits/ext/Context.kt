@@ -1,9 +1,10 @@
-package com.example.myprofilemarkup.utilits
+package com.example.myprofilemarkup.utilits.ext
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.example.myprofilemarkup.utilits.Constants
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
@@ -17,6 +18,6 @@ suspend fun Context.saveData(key: String, value: String) {
 
 suspend fun Context.getDataValue(key: String): String {
     return dataStore.data.map { preferences ->
-        preferences[stringPreferencesKey(key)].orEmpty()
-    }.first { it.isNotEmpty() }
+        preferences[stringPreferencesKey(key)]
+    }.first()?:""
 }
