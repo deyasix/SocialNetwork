@@ -41,4 +41,5 @@
     <dimen name="margin_top_terms">16dp</dimen>
     <dimen name="margin_horizontal_terms">28dp</dimen>
     <dimen name="margin_start_sign_in">12dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

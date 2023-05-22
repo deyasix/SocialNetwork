@@ -31,4 +31,9 @@
     <string name="password_size">Your password must include a minimum of 8 characters.</string>
     <string name="incorrect_password_email">Incorrect e-mail or password!</string>
     <string name="icon_google_description">Icon of Google</string>
+
+    <!--Activity Contacts-->
+    <string name="contacts">Contacts</string>
+    <string name="add_contacts">Add contacts</string>
+
 </resources>
