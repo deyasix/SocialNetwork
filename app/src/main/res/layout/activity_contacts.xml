@@ -21,45 +21,65 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/guideLineTopBar"
         android:background="?attr/colorPrimary"/>
-    <ImageButton
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/imageButtonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="16dp"
-        android:padding="12dp"
-        android:background="@drawable/arrow_back_24px"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintBottom_toBottomOf="@id/textViewContacts"
-        app:layout_constraintEnd_toStartOf="@id/textViewContacts"
-        />
+        app:layout_constraintEnd_toStartOf="@id/textViewContacts">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/back_button_description"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/arrow_back_24px"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <TextView
         android:id="@+id/textViewContacts"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/contacts"
         android:textSize="24sp"
+        android:gravity="center_horizontal"
         android:layout_marginTop="20dp"
+        app:layout_constraintHorizontal_weight="2"
         android:textColor="@color/white"
         android:fontFamily="@font/open_sans_semi_bold"
         app:layout_constraintStart_toEndOf="@id/imageButtonBack"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/imageButtonSearch"
         />
-    <androidx.appcompat.widget.AppCompatImageButton
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/imageButtonSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:padding="12dp"
-        android:background="@drawable/ic_search"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@id/textViewContacts"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/textViewContacts"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/search_button_description"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="center_vertical|end"
+            android:src="@drawable/ic_search"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <TextView
         android:id="@+id/textViewAddContacts"
         android:layout_width="0dp"
@@ -78,6 +98,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:listitem="@layout/user_item"
+        android:paddingTop="20dp"
+        android:paddingHorizontal="20dp"
         app:layout_constraintTop_toTopOf="@id/guideLineTopBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

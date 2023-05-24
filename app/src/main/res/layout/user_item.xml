@@ -6,16 +6,15 @@
     android:background="@drawable/user_item_background">
     <ImageView
         android:id="@+id/imageViewPhotoItem"
-        android:src="@drawable/ic_instagram"
         android:padding="12dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:contentDescription="@string/contact_photo_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
     <TextView
         android:id="@+id/textViewNameItem"
-        android:text="Name Surname"
         android:textColor="@color/black"
         android:fontFamily="@font/open_sans_semi_bold"
         android:layout_width="0dp"
@@ -28,7 +27,6 @@
 
     <TextView
         android:id="@+id/textViewCareerItem"
-        android:text="Career"
         android:fontFamily="@font/open_sans_regular"
         android:textColor="@color/grey_text"
         android:layout_width="0dp"
@@ -38,10 +36,12 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         app:layout_constraintBottom_toBottomOf="parent"/>
     <ImageView
+        android:id="@+id/imageViewTrashBinItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_trash_bin"
         android:padding="12dp"
+        android:contentDescription="@string/trash_bin_icon_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

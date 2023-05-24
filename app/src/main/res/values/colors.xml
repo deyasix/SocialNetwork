@@ -9,5 +9,6 @@
     <color name="grey_text">#B2B2B3</color>
     <color name="grey_blue">#4F4E5D</color>
     <color name="red">#F93E3E</color>
+    <color name="transparent">#0000ffff</color>
 
 </resources>
