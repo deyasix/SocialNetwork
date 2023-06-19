@@ -39,4 +39,9 @@
     <string name="trash_bin_icon_description">Icon of trash bin</string>
     <string name="back_button_description">Icon of back button</string>
     <string name="search_button_description">Icon of search button</string>
+
+    <!-- Add Contact Dialog Fragment -->
+    <string name="add_contact">Add contact</string>
+    <string name="username">Username</string>
+    <string name="save">Save</string>
 </resources>

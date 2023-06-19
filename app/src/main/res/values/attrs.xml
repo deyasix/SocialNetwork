@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomGoogleRegistrationButton">
+        <attr name="googleButtonColor" format="color" />
+        <attr name="googleButtonCornerRadius" format="dimension" />
+        <attr name="googleButtonText" format="string" />
+        <attr name="googleButtonTextColor" format="color"/>
+        <attr name="googleButtonIcon" format="reference"/>
+        <attr name="googleButtonTextSize" format="dimension"/>
+        <attr name="googleButtonPaddingBeforeText" format="dimension"/>
+        <attr name="googleButtonIconWidth" format="dimension"/>
+        <attr name="googleButtonIconHeight" format="dimension"/>
+        <attr name="googleButtonTextFontFamily" format="reference"/>
+        <attr name="googleButtonLetterSpacing" format="float"/>
+    </declare-styleable>
+
+
+    <attr name="CustomGoogleRegistrationButtonStyle" format="reference" />
+</resources>

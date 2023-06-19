@@ -1,6 +1,8 @@
 package com.example.myprofilemarkup.data
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -22,34 +24,39 @@ class ContactAdapter(private val dataSet: MutableList<User>) :
                 textViewCareerItem.text = user.career
                 imageViewPhotoItem.loadPhoto(user.photo)
                 imageViewTrashBinItem.setOnClickListener {
-                    deleteItem(user)
+                    deleteItem(absoluteAdapterPosition, root)
                 }
             }
         }
-
-        private fun deleteItem(user: User) {
-            val index = absoluteAdapterPosition
-            dataSet.remove(user)
-            notifyItemRemoved(bindingAdapterPosition)
-            notifyItemRangeChanged(bindingAdapterPosition, dataSet.size)
-            Snackbar.make(binding.imageViewTrashBinItem, "Contact has been removed", 5000)
-                .setAction("Cancel") {
-                    cancelDeletingItem(user, index)
-                }.show()
-        }
-
-        private fun cancelDeletingItem(user: User, index: Int) {
-            dataSet.add(index, user)
-            notifyItemInserted(index)
-            notifyItemRangeChanged(bindingAdapterPosition, dataSet.size)
-            Toast.makeText(
-                binding.imageViewTrashBinItem.context,
-                "Contact removing is canceled!",
-                Toast.LENGTH_LONG
-            ).show()
-        }
     }
 
+    private fun removeAt(index: Int) {
+        dataSet.removeAt(index)
+        notifyItemRemoved(index)
+    }
+
+    fun deleteItem(index: Int, view: View) {
+        val user = dataSet[index]
+        removeAt(index)
+        Snackbar.make(view, "Contact has been removed", 5000)
+            .setAction("Cancel") {
+                cancelDeletingItem(user, index, view.context)
+            }.show()
+    }
+
+    private fun cancelDeletingItem(user: User, index: Int, context: Context) {
+        addAt(index, user)
+        Toast.makeText(
+            context,
+            "Contact removing is canceled!",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    private fun addAt(index: Int, user: User) {
+        dataSet.add(index, user)
+        notifyItemInserted(index)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder(

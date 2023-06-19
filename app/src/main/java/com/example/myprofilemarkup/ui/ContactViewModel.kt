@@ -17,7 +17,19 @@ class ContactViewModel : ViewModel() {
         _uiState.update { currentState -> currentState.apply {addAll(UserRepository.users)} }
     }
 
+    fun getUser(index: Int) : User {
+        return _uiState.value[index]
+    }
+
     fun addUser(user : User) {
         _uiState.update { currentState -> currentState.apply { add(user) } }
+    }
+
+    fun addAt(index: Int, user: User) {
+        _uiState.update { currentState -> currentState.apply { add(index, user) } }
+    }
+
+    fun deleteAt(index: Int) {
+        _uiState.update { currentState -> currentState.apply { deleteAt(index)} }
     }
 }

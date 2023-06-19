@@ -14,6 +14,7 @@ import com.example.myprofilemarkup.databinding.ActivityRegistrationBinding
 import com.example.myprofilemarkup.utilits.Constants
 import com.example.myprofilemarkup.utilits.Constants.EMAIL
 import com.example.myprofilemarkup.utilits.Constants.PASSWORD
+import com.example.myprofilemarkup.utilits.Constants.PASSWORD_LENGTH
 import com.example.myprofilemarkup.utilits.Constants.REMEMBER
 import com.example.myprofilemarkup.utilits.ext.hideSoftKeyboard
 import com.example.myprofilemarkup.utilits.ext.getDataValue
@@ -193,7 +194,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun isPasswordCorrect(password: String): Boolean {
-        return (password.trim().isNotEmpty() && password.length >= 8 && password.any(Char::isDigit)
+        return (password.trim().isNotEmpty() && password.length >= PASSWORD_LENGTH && password.any(Char::isDigit)
                 && password.any(Char::isLowerCase) && password.any(Char::isUpperCase))
     }
 
@@ -201,7 +202,7 @@ class AuthActivity : AppCompatActivity() {
         val isEmptyPassword = password.trim().isEmpty()
         binding.textInputLayoutPassword.error = when {
             isEmptyPassword -> getString(R.string.required_field)
-            password.length < 8 -> getString(R.string.password_size)
+            password.length < PASSWORD_LENGTH -> getString(R.string.password_size)
             password.none(Char::isDigit) -> getString(R.string.required_digit_password)
             else -> getString(R.string.password_rules)
         }

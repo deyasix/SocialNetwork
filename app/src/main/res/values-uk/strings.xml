@@ -40,4 +40,9 @@
     <string name="trash_bin_icon_description">Іконка сміттєвої корзини</string>
     <string name="back_button_description">Іконка кнопки повернення</string>
     <string name="search_button_description">Іконка кнопки пошуку</string>
+
+    <!-- Add Contact Dialog Fragment -->
+    <string name="add_contact">Додати контакт</string>
+    <string name="username">Ім\'я користувача</string>
+    <string name="save">Зберегти</string>
 </resources>
