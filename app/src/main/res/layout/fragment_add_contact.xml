@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="?attr/colorPrimary"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/padding_dialog_fragment">
 
     <TextView
         android:id="@+id/textViewAddContact"
@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/open_sans_semi_bold"
-        android:paddingHorizontal="40dp"
-        android:paddingBottom="16dp"
+        android:paddingHorizontal="@dimen/padding_horizontal_add_contact"
+        android:paddingBottom="@dimen/padding_dialog_fragment"
         android:text="@string/add_contact"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="@dimen/text_size_add_contact" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,8 +45,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/career"
         app:expandedHintEnabled="false"
-        app:hintTextAppearance="@style/TextInputHint"
-        app:hintTextColor="@color/black">
+        app:hintTextAppearance="@style/TextInputHint">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextContactCareer"
@@ -65,9 +64,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/padding_dialog_fragment"
         android:background="@drawable/orange_frame_button"
         android:fontFamily="@font/open_sans_semi_bold"
         android:text="@string/save"
-        android:textSize="22sp" />
+        android:textSize="@dimen/text_size_button_save" />
 </androidx.appcompat.widget.LinearLayoutCompat>

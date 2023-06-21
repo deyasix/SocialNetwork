@@ -42,4 +42,23 @@
     <dimen name="margin_horizontal_terms">28dp</dimen>
     <dimen name="margin_start_sign_in">12dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="google_button_corner_radius">6dp</dimen>
+
+
+    <!--Activity Contacts-->
+    <dimen name="margin_end_start">16dp</dimen>
+    <dimen name="margin_top_contacts">20dp</dimen>
+    <dimen name="text_size_contacts">24sp</dimen>
+    <dimen name="text_size_add_contacts">16sp</dimen>
+
+    <!--Fragment Add Contact-->
+    <dimen name="padding_dialog_fragment">16dp</dimen>
+    <dimen name="padding_horizontal_add_contact">50dp</dimen>
+    <dimen name="text_size_add_contact">24sp</dimen>
+    <dimen name="text_size_button_save">22sp</dimen>
+
+    <!--User Item-->
+    <dimen name="padding_image_user_item">12dp</dimen>
+    <dimen name="image_user_item_size">90dp</dimen>
+    <dimen name="margin_end_trash_bin">16dp</dimen>
 </resources>

@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myprofilemarkup.R
-import com.example.myprofilemarkup.data.AddContactDialogFragment
 import com.example.myprofilemarkup.data.ContactAdapter
 import com.example.myprofilemarkup.databinding.ActivityContactsBinding
 

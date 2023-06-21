@@ -1,17 +1,18 @@
-package com.example.myprofilemarkup.data
+package com.example.myprofilemarkup.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.myprofilemarkup.data.User
 import com.example.myprofilemarkup.databinding.FragmentAddContactBinding
 
 class AddContactDialogFragment(val action: (user: User) -> Unit) : DialogFragment() {
 
 
     private var _binding: FragmentAddContactBinding? = null
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
