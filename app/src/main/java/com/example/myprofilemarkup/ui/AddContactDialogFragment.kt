@@ -20,14 +20,21 @@ class AddContactDialogFragment(val action: (user: User) -> Unit) : DialogFragmen
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddContactBinding.inflate(inflater, container, false)
-        binding.buttonSaveContact.setOnClickListener{
-            val career = binding.textInputEditTextContactCareer.text.toString()
-            val name = binding.textInputEditTextContactUsername.text.toString()
-            action(User(5, "", name, career, ""))
-            dismiss()
-        }
+        setSaveClickListener()
         return binding.root
     }
+
+    private fun setSaveClickListener() {
+        with(binding) {
+            buttonSaveContact.setOnClickListener {
+                val career = textInputEditTextContactCareer.text.toString()
+                val name = textInputEditTextContactUsername.text.toString()
+                action(User(5, "", name, career, ""))
+                dismiss()
+            }
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

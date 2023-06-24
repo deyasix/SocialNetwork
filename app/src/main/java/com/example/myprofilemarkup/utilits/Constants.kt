@@ -10,4 +10,6 @@ object Constants {
     const val NAME_SURNAME = "NAME_SURNAME"
     const val PREFERENCE_NAME = "MyProfileMarkupPreference"
     const val PASSWORD_LENGTH = 8
+    const val SNACKBAR_DURATION = 5000
+    const val GOOGLE_BUTTON_TEXT_SIZE = 14f
 }

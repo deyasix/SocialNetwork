@@ -148,7 +148,7 @@
             android:layout_height="@dimen/button_google_height"
             app:color="@color/white"
             app:googleButtonCornerRadius="@dimen/google_button_corner_radius"
-            app:googleButtonText="GOOGLE"
+            app:googleButtonText="@string/google"
             app:googleButtonTextSize="@dimen/text_size_button_google"
             app:googleButtonIconWidth="@dimen/google_icon_size"
             app:googleButtonIconHeight="@dimen/google_icon_size"

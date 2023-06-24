@@ -39,6 +39,9 @@
     <string name="trash_bin_icon_description">Icon of trash bin</string>
     <string name="back_button_description">Icon of back button</string>
     <string name="search_button_description">Icon of search button</string>
+    <string name="removing_contact_success">Contact has been removed</string>
+    <string name="removing_contact_cancel">Cancel</string>
+    <string name="canceled_removing_contact">Contact removing is canceled!</string>
 
     <!-- Add Contact Dialog Fragment -->
     <string name="add_contact">Add contact</string>

@@ -40,6 +40,9 @@
     <string name="trash_bin_icon_description">Іконка сміттєвої корзини</string>
     <string name="back_button_description">Іконка кнопки повернення</string>
     <string name="search_button_description">Іконка кнопки пошуку</string>
+    <string name="removing_contact_success">Контакт було видалено</string>
+    <string name="removing_contact_cancel">Відмінити</string>
+    <string name="canceled_removing_contact">Видалення контакту відмінено!</string>
 
     <!-- Add Contact Dialog Fragment -->
     <string name="add_contact">Додати контакт</string>

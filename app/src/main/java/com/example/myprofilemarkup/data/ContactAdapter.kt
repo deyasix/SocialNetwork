@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myprofilemarkup.R
 import com.example.myprofilemarkup.databinding.UserItemBinding
+import com.example.myprofilemarkup.utilits.Constants.SNACKBAR_DURATION
 import com.example.myprofilemarkup.utilits.ext.loadPhoto
 import com.google.android.material.snackbar.Snackbar
-
 
 class ContactAdapter(private val dataSet: MutableList<User>) :
     RecyclerView.Adapter<ContactAdapter.UserViewHolder>() {
@@ -38,8 +39,9 @@ class ContactAdapter(private val dataSet: MutableList<User>) :
     fun deleteItem(index: Int, view: View) {
         val user = dataSet[index]
         removeAt(index)
-        Snackbar.make(view, "Contact has been removed", 5000)
-            .setAction("Cancel") {
+        val context = view.context
+        Snackbar.make(view, context.getString(R.string.removing_contact_success), SNACKBAR_DURATION)
+            .setAction(context.getString(R.string.removing_contact_cancel)) {
                 cancelDeletingItem(user, index, view.context)
             }.show()
     }
@@ -47,9 +49,7 @@ class ContactAdapter(private val dataSet: MutableList<User>) :
     private fun cancelDeletingItem(user: User, index: Int, context: Context) {
         addAt(index, user)
         Toast.makeText(
-            context,
-            "Contact removing is canceled!",
-            Toast.LENGTH_SHORT
+            context, context.getString(R.string.canceled_removing_contact), Toast.LENGTH_SHORT
         ).show()
     }
 

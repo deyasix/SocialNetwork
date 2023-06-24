@@ -12,7 +12,6 @@ import com.example.myprofilemarkup.R
 import com.example.myprofilemarkup.data.ContactAdapter
 import com.example.myprofilemarkup.databinding.ActivityContactsBinding
 
-
 class ContactsActivity : AppCompatActivity() {
 
     private val binding: ActivityContactsBinding by lazy {
@@ -25,6 +24,10 @@ class ContactsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setRecyclerView()
+        setAddContactClickListener()
+    }
+
+    private fun setAddContactClickListener() {
         binding.textViewAddContacts.setOnClickListener {
             AddContactDialogFragment(viewModel::addUser).show(supportFragmentManager, AddContactDialogFragment.TAG)
         }
@@ -35,19 +38,30 @@ class ContactsActivity : AppCompatActivity() {
         with (binding.recyclerViewContacts) {
             layoutManager = LinearLayoutManager(this@ContactsActivity)
             adapter = contactAdapter
+            setRecyclerViewDivider(this)
+            setRemovingElementBySwipe(contactAdapter, this)
         }
+    }
+
+    /** Set divider between elements of recycler view */
+    private fun setRecyclerViewDivider(recyclerView: RecyclerView) {
         val dividerItemDecoration = DividerItemDecoration(this, RecyclerView.VERTICAL)
-        val divider = ContextCompat.getDrawable(this@ContactsActivity, R.drawable.contacts_divider)
+        val divider = ContextCompat.getDrawable(this, R.drawable.contacts_divider)
         if (divider != null) {
             dividerItemDecoration.setDrawable(divider)
         }
-        binding.recyclerViewContacts.addItemDecoration(dividerItemDecoration)
-        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-            override fun onMove(v: RecyclerView, h: RecyclerView.ViewHolder, t: RecyclerView.ViewHolder) = false
-            override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) = contactAdapter.deleteItem(h.absoluteAdapterPosition, h.itemView)
-        }).attachToRecyclerView(binding.recyclerViewContacts)
+        recyclerView.addItemDecoration(dividerItemDecoration)
     }
 
+    /** Set removing element by swipe */
+    private fun setRemovingElementBySwipe(contactAdapter: ContactAdapter, recyclerView: RecyclerView) {
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            override fun onMove(v: RecyclerView, h: RecyclerView.ViewHolder, t: RecyclerView.ViewHolder) = false
+            override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) {
+                contactAdapter.deleteItem(h.absoluteAdapterPosition, h.itemView)
+            }
+        }).attachToRecyclerView(recyclerView)
+    }
 
 
 }

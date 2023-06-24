@@ -11,6 +11,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import com.example.myprofilemarkup.R
+import com.example.myprofilemarkup.utilits.Constants.GOOGLE_BUTTON_TEXT_SIZE
 
 
 class CustomGoogleRegistrationButton @JvmOverloads constructor(
@@ -22,10 +23,11 @@ class CustomGoogleRegistrationButton @JvmOverloads constructor(
 
 
     var color: Int = Color.WHITE
-    var cornerRadius: Float = 0f
+    private var cornerRadius: Float = 0f
     var text: String? = null
     var textColor: Int = Color.BLACK
-    var icon : Drawable? = null
+    var textSize: Float = GOOGLE_BUTTON_TEXT_SIZE
+    private var icon: Drawable? = null
         set(value) {
             field = value
             if (value != null) {
@@ -33,12 +35,11 @@ class CustomGoogleRegistrationButton @JvmOverloads constructor(
                 iconHeight = value.minimumHeight.toFloat()
             }
         }
-    var textSize: Float = 14f
-    var paddingBeforeText: Float = 0f
-    var iconWidth: Float = 0f
-    private var iconHeight : Float = 0f
+    private var paddingBeforeText: Float = 0f
+    private var iconWidth: Float = 0f
+    private var iconHeight: Float = 0f
     private var typeface: Typeface? = null
-    private var letterSpacing : Float = 0.1f
+    private var letterSpacing: Float = 0.1f
 
     override fun onDraw(canvas: Canvas?) {
 
@@ -53,37 +54,42 @@ class CustomGoogleRegistrationButton @JvmOverloads constructor(
             paint.textSize = textSize
             paint.typeface = typeface
             paint.letterSpacing = letterSpacing
-            it.drawText(textString, button.centerX() - iconWidth / 2,
-                button.centerY() - textHeight / 2, paint)
+            paint.isAntiAlias = true
+            it.drawText(
+                textString, button.centerX() - textWidth / 2 + iconWidth / 2,
+                button.centerY() - textHeight / 2, paint
+            )
         }
 
     }
 
-    private fun drawButton(canvas: Canvas) : RectF {
+    private fun drawButton(canvas: Canvas): RectF {
         val button = RectF()
         button[0f, 0f, width.toFloat()] = height.toFloat()
         val paint = Paint()
         paint.color = this.color
         paint.style = Paint.Style.FILL
+        paint.isAntiAlias = true
         canvas.drawRoundRect(button, cornerRadius, cornerRadius, paint)
         return button
     }
 
-    private fun getTextWidthHeight(text: String) : Pair<Float, Float> {
+    private fun getTextWidthHeight(text: String): Pair<Float, Float> {
         val paint = Paint()
         paint.color = textColor
         paint.style = Paint.Style.FILL
         paint.textSize = textSize
         paint.typeface = typeface
+        paint.isAntiAlias = true
         return Pair(paint.measureText(text), paint.descent() + paint.ascent())
     }
 
     private fun drawIcon(canvas: Canvas) {
 
-        val (textWidth, textHeight) = getTextWidthHeight(text?:"")
-        val left = ((width - iconWidth - textWidth) / 2).toInt()
+        val (textWidth, textHeight) = getTextWidthHeight(text ?: "")
+        val left = ((width - iconWidth - textWidth - width * 0.05f) / 2).toInt()
         val top = if (iconHeight > textHeight) ((height - iconHeight) / 2).toInt()
-            else ((height - textHeight) / 2).toInt()
+        else ((height - textHeight) / 2).toInt()
         icon?.setBounds(left, top, iconWidth.toInt() + left, iconHeight.toInt() + top)
         icon?.draw(canvas)
     }
@@ -95,25 +101,53 @@ class CustomGoogleRegistrationButton @JvmOverloads constructor(
     }
 
     private fun initAttributes(attributes: AttributeSet, defStyleAttr: Int, defStyleRes: Int) {
-        val typedArray = context.obtainStyledAttributes(attributes, R.styleable.CustomGoogleRegistrationButton, defStyleAttr, defStyleRes)
-        with (typedArray) {
-            color = getColor(R.styleable.CustomGoogleRegistrationButton_googleButtonColor, Color.WHITE)
-            cornerRadius = getDimension(R.styleable.CustomGoogleRegistrationButton_googleButtonCornerRadius, 0f)
-            text = getString(R.styleable.CustomGoogleRegistrationButton_googleButtonText)
-            textColor = getColor(R.styleable.CustomGoogleRegistrationButton_googleButtonTextColor, Color.BLACK)
+        val typedArray = context.obtainStyledAttributes(
+            attributes,
+            R.styleable.CustomGoogleRegistrationButton,
+            defStyleAttr,
+            defStyleRes
+        )
+        with(typedArray) {
+            color =
+                getColor(R.styleable.CustomGoogleRegistrationButton_googleButtonColor, Color.WHITE)
+            cornerRadius = getDimension(
+                R.styleable.CustomGoogleRegistrationButton_googleButtonCornerRadius,
+                0f
+            )
+            text =
+                getString(R.styleable.CustomGoogleRegistrationButton_googleButtonText)?.uppercase()
+            textColor = getColor(
+                R.styleable.CustomGoogleRegistrationButton_googleButtonTextColor,
+                Color.BLACK
+            )
             icon = getDrawable(R.styleable.CustomGoogleRegistrationButton_googleButtonIcon)
-            textSize = getDimension(R.styleable.CustomGoogleRegistrationButton_googleButtonTextSize, 14f)
-            paddingBeforeText = getDimension(R.styleable.CustomGoogleRegistrationButton_googleButtonPaddingBeforeText, 0f)
-            iconWidth = getDimension(R.styleable.CustomGoogleRegistrationButton_googleButtonIconWidth, iconWidth)
-            iconHeight = getDimension(R.styleable.CustomGoogleRegistrationButton_googleButtonIconHeight, iconHeight)
-            val fontId = getResourceId(R.styleable.CustomGoogleRegistrationButton_googleButtonTextFontFamily, 0)
+            textSize =
+                getDimension(
+                    R.styleable.CustomGoogleRegistrationButton_googleButtonTextSize,
+                    GOOGLE_BUTTON_TEXT_SIZE
+                )
+            paddingBeforeText = getDimension(
+                R.styleable.CustomGoogleRegistrationButton_googleButtonPaddingBeforeText,
+                0f
+            )
+            iconWidth = getDimension(
+                R.styleable.CustomGoogleRegistrationButton_googleButtonIconWidth,
+                iconWidth
+            )
+            iconHeight = getDimension(
+                R.styleable.CustomGoogleRegistrationButton_googleButtonIconHeight,
+                iconHeight
+            )
+            val fontId = getResourceId(
+                R.styleable.CustomGoogleRegistrationButton_googleButtonTextFontFamily,
+                0
+            )
             if (fontId > 0) {
                 typeface = ResourcesCompat.getFont(context, fontId)
             }
-            letterSpacing = getFloat(R.styleable.CustomGoogleRegistrationButton_googleButtonLetterSpacing, 0.1f)
+            letterSpacing =
+                getFloat(R.styleable.CustomGoogleRegistrationButton_googleButtonLetterSpacing, 0.1f)
             recycle()
         }
     }
-
-
 }

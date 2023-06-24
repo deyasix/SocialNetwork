@@ -18,10 +18,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.textViewNameSurname.text = intent.getStringExtra(Constants.NAME_SURNAME)
+        setViewContactClickListener()
+    }
+
+    private fun setViewContactClickListener() {
         binding.buttonViewMyContacts.setOnClickListener {
             startActivity(Intent(this, ContactsActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)
         }
     }
-
 }
