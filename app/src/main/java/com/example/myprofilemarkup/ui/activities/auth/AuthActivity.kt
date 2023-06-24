@@ -1,4 +1,4 @@
-package com.example.myprofilemarkup.ui
+package com.example.myprofilemarkup.ui.activities.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,8 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.example.myprofilemarkup.R
 import com.example.myprofilemarkup.databinding.ActivityRegistrationBinding
+import com.example.myprofilemarkup.ui.activities.main.MainActivity
+import com.example.myprofilemarkup.ui.utils.CustomGoogleRegistrationButton
 import com.example.myprofilemarkup.utilits.Constants
 import com.example.myprofilemarkup.utilits.Constants.EMAIL
 import com.example.myprofilemarkup.utilits.Constants.PASSWORD
@@ -24,14 +26,16 @@ import kotlinx.coroutines.launch
 
 class AuthActivity : AppCompatActivity() {
 
-    private val binding: ActivityRegistrationBinding by lazy {
+    //todo autologin don't create interface
+
+    private val binding: ActivityRegistrationBinding by lazy {  //todo can be in base-class
         ActivityRegistrationBinding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         checkAutoLogin()
-        setupListeners()
+        setupListeners()    //todo maybe after set content
         setContentView(binding.root)
     }
 
@@ -77,7 +81,7 @@ class AuthActivity : AppCompatActivity() {
             val password = binding.textInputEditTextPassword.text.toString()
             if (binding.checkBoxRemember.isChecked) {
                 lifecycleScope.launch {
-                    saveData(EMAIL, email)
+                    saveData(EMAIL, email)      //todo it can be one method 'save user data' (if datastore is separate class)
                     saveData(PASSWORD, password)
                 }
             }
@@ -93,12 +97,12 @@ class AuthActivity : AppCompatActivity() {
     /**
      * Method that gets name and surname from email (parsing).
      */
-    private fun getNameSurname(email: String): String {
+    private fun getNameSurname(email: String): String {     //todo maybe in main activity?
         val splitEmail = email.split(Constants.AT_SIGN)[0]
         return if (splitEmail.contains(Constants.DOT_SYMBOL)) {
             val nameSurname = splitEmail.split(Constants.DOT_SYMBOL)
             val (name, surname) = Pair(nameSurname[0], nameSurname[1])
-            name.replaceFirstChar { it.uppercase() } + Constants.WHITESPACE_SYMBOL +
+            name.replaceFirstChar { it.uppercase() } + Constants.WHITESPACE_SYMBOL +    //todo good
                     surname.replaceFirstChar { it.uppercase() }
         } else splitEmail.replaceFirstChar { it.uppercase() }
     }
@@ -107,13 +111,13 @@ class AuthActivity : AppCompatActivity() {
      * Method that checks validating of text fields. Each validation should be performed, so
      * before checks if all validation is satisfied, we add two variables.
      */
-    private fun isValidate(): Boolean {
+    private fun isValidate(): Boolean { //todo simplify
         val isValidEmail = validateEmail()
         val isValidPassword = validatePassword()
         return isValidEmail && isValidPassword
     }
 
-    private fun setupListeners() {
+    private fun setupListeners() {  //todo maybe too decompose =)
         setScreenClickListener()
         setListenerToEmailEditText()
         setListenerToPasswordEditText()
@@ -169,7 +173,7 @@ class AuthActivity : AppCompatActivity() {
     private fun validateEmail(): Boolean {
         val email = binding.textInputEditTextEmail.text.toString()
         val isEmptyEmail = email.trim().isEmpty()
-        return if (!isEmptyEmail && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        return if (!isEmptyEmail && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {  //todo check regex = check empty?
             binding.textInputLayoutEmail.isErrorEnabled = false
             true
         } else {
@@ -195,7 +199,7 @@ class AuthActivity : AppCompatActivity() {
 
     private fun isPasswordCorrect(password: String): Boolean {
         return (password.trim().isNotEmpty() && password.length >= PASSWORD_LENGTH && password.any(Char::isDigit)
-                && password.any(Char::isLowerCase) && password.any(Char::isUpperCase))
+                && password.any(Char::isLowerCase) && password.any(Char::isUpperCase))  //todo regex? check empty = check length?
     }
 
     private fun showPasswordError(password: String) {

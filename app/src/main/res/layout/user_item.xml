@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/user_item_background">
     <ImageView
         android:id="@+id/imageViewPhotoItem"
@@ -12,6 +13,7 @@
         android:contentDescription="@string/contact_photo_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/avatar"
         />
     <TextView
         android:id="@+id/textViewNameItem"
@@ -23,7 +25,8 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@id/textViewCareerItem"
         app:layout_constraintStart_toEndOf="@id/imageViewPhotoItem"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        tools:text = "Name"/>
 
     <TextView
         android:id="@+id/textViewCareerItem"
@@ -34,7 +37,8 @@
         app:layout_constraintStart_toEndOf="@id/imageViewPhotoItem"
         app:layout_constraintTop_toBottomOf="@id/textViewNameItem"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text = "Career"        />
     <ImageView
         android:id="@+id/imageViewTrashBinItem"
         android:layout_width="0dp"
@@ -44,5 +48,5 @@
         android:contentDescription="@string/trash_bin_icon_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

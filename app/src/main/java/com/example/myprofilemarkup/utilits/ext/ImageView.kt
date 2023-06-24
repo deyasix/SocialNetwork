@@ -14,7 +14,10 @@ fun ImageView.loadPhoto(url: String) {
 
     when (imageLoader) {
         ImageLoader.Glide -> {
-            Glide.with(context).load(url).circleCrop().into(this)
+            Glide.with(context)
+                .load(url)
+                .circleCrop()
+                .into(this) //todo error
         }
 
         ImageLoader.Coil -> {

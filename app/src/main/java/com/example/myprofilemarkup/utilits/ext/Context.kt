@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 private val Context.dataStore by preferencesDataStore(Constants.PREFERENCE_NAME)
+//todo maybe not as extension, and as datastore class instead? https://developer.android.com/topic/libraries/architecture/datastore
 
 suspend fun Context.saveData(key: String, value: String) {
     dataStore.edit { settings ->

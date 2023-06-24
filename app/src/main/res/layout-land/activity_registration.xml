@@ -142,7 +142,7 @@
             app:layout_constraintStart_toStartOf="@id/guideLineLeft"
             app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword" />
 
-        <com.example.myprofilemarkup.ui.CustomGoogleRegistrationButton
+        <com.example.myprofilemarkup.ui.utils.CustomGoogleRegistrationButton
             android:id="@+id/googleButton"
             android:layout_width="0dp"
             android:layout_height="@dimen/button_google_height"

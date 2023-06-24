@@ -1,4 +1,4 @@
-package com.example.myprofilemarkup.ui
+package com.example.myprofilemarkup.ui.utils
 
 import android.content.Context
 import android.graphics.Canvas
@@ -22,10 +22,10 @@ class CustomGoogleRegistrationButton @JvmOverloads constructor(
 ) : View(context, attributes, defStyleAttr, defStyleRes) {
 
 
-    var color: Int = Color.WHITE
+    var color: Int = Color.WHITE        // todo move to theme
     private var cornerRadius: Float = 0f
     var text: String? = null
-    var textColor: Int = Color.BLACK
+    var textColor: Int = Color.BLACK     // todo move to theme
     var textSize: Float = GOOGLE_BUTTON_TEXT_SIZE
     private var icon: Drawable? = null
         set(value) {
@@ -41,7 +41,7 @@ class CustomGoogleRegistrationButton @JvmOverloads constructor(
     private var typeface: Typeface? = null
     private var letterSpacing: Float = 0.1f
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas?) {      //todo all create can't in onDraw
 
         canvas?.let {
             val button = drawButton(it)

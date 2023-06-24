@@ -1,4 +1,4 @@
-package com.example.myprofilemarkup.ui
+package com.example.myprofilemarkup.ui.activities.myContacts
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,10 @@ import com.example.myprofilemarkup.databinding.FragmentAddContactBinding
 
 class AddContactDialogFragment(val action: (user: User) -> Unit) : DialogFragment() {
 
+    //todo add layout from Figma
+    //  add photos (standard)
+    //  handle empty text fields
+    //  crash when rotate (argument in constructor)
 
     private var _binding: FragmentAddContactBinding? = null
     private val binding get() = _binding!!
@@ -29,7 +33,7 @@ class AddContactDialogFragment(val action: (user: User) -> Unit) : DialogFragmen
             buttonSaveContact.setOnClickListener {
                 val career = textInputEditTextContactCareer.text.toString()
                 val name = textInputEditTextContactUsername.text.toString()
-                action(User(5, "", name, career, ""))
+                action(User(5, "", name, career, ""))       //todo hardcoded id
                 dismiss()
             }
         }

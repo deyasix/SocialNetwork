@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MyProfileMarkup"
         tools:targetApi="31">
         <activity
-            android:name=".ui.AuthActivity"
+            android:name=".ui.activities.auth.AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.ContactsActivity" />
+        <activity android:name=".ui.activities.main.MainActivity" />
+        <activity android:name=".ui.activities.myContacts.ContactsActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.myprofilemarkup.ui
+package com.example.myprofilemarkup.ui.activities.myContacts
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -9,16 +9,25 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myprofilemarkup.R
-import com.example.myprofilemarkup.data.ContactAdapter
 import com.example.myprofilemarkup.databinding.ActivityContactsBinding
+import com.example.myprofilemarkup.ui.activities.myContacts.adapter.ContactAdapter
 
 class ContactsActivity : AppCompatActivity() {
+
+    //todo back button
+    //todo bug
+    //      when remove contact and multiple clicks on restore -> restore many copies
+    //      empty contacts added silently
+    //todo crash
+    //      double click on remove bin
+    //
+
 
     private val binding: ActivityContactsBinding by lazy {
         ActivityContactsBinding.inflate(layoutInflater)
     }
 
-    private val viewModel : ContactViewModel by viewModels()
+    private val viewModel : ContactViewModel by viewModels()        //todo can be in base-class
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +38,14 @@ class ContactsActivity : AppCompatActivity() {
 
     private fun setAddContactClickListener() {
         binding.textViewAddContacts.setOnClickListener {
-            AddContactDialogFragment(viewModel::addUser).show(supportFragmentManager, AddContactDialogFragment.TAG)
+            AddContactDialogFragment(viewModel::addUser).show(supportFragmentManager,
+                AddContactDialogFragment.TAG
+            )
         }
     }
 
     private fun setRecyclerView() {
-        val contactAdapter = ContactAdapter(viewModel.uiState.value)
+        val contactAdapter = ContactAdapter(viewModel.uiState.value)    //todo observe viewModel flow
         with (binding.recyclerViewContacts) {
             layoutManager = LinearLayoutManager(this@ContactsActivity)
             adapter = contactAdapter

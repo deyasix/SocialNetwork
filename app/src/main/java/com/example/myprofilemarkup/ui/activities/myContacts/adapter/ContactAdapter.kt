@@ -1,4 +1,4 @@
-package com.example.myprofilemarkup.data
+package com.example.myprofilemarkup.ui.activities.myContacts.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myprofilemarkup.R
+import com.example.myprofilemarkup.data.User
 import com.example.myprofilemarkup.databinding.UserItemBinding
 import com.example.myprofilemarkup.utilits.Constants.SNACKBAR_DURATION
 import com.example.myprofilemarkup.utilits.ext.loadPhoto
 import com.google.android.material.snackbar.Snackbar
 
 class ContactAdapter(private val dataSet: MutableList<User>) :
-    RecyclerView.Adapter<ContactAdapter.UserViewHolder>() {
+    RecyclerView.Adapter<ContactAdapter.UserViewHolder>() {     //todo ListAdapter (with diff-util)
 
     inner class UserViewHolder(contactBinding: UserItemBinding) :
         RecyclerView.ViewHolder(contactBinding.root) {
@@ -24,7 +25,7 @@ class ContactAdapter(private val dataSet: MutableList<User>) :
                 textViewNameItem.text = user.name
                 textViewCareerItem.text = user.career
                 imageViewPhotoItem.loadPhoto(user.photo)
-                imageViewTrashBinItem.setOnClickListener {
+                imageViewTrashBinItem.setOnClickListener {  //todo onClick (delete) - move to activity (viewModel) via interface (anonymous object).
                     deleteItem(absoluteAdapterPosition, root)
                 }
             }

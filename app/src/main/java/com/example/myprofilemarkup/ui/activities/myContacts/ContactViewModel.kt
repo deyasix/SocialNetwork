@@ -1,4 +1,4 @@
-package com.example.myprofilemarkup.ui
+package com.example.myprofilemarkup.ui.activities.myContacts
 
 import androidx.lifecycle.ViewModel
 import com.example.myprofilemarkup.data.User
