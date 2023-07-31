@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyProfileMarkup</string>
+
+    <!--Activity Main-->
+    <string name="settings">Налаштування</string>
+    <string name="nameSurname">Ім\'я Прізвище</string>
+    <string name="career">Кар\'єра</string>
+    <string name="address">Адреса</string>
+    <string name="edit_profile">Редагувати профіль</string>
+    <string name="view_contacts">Переглянути мої контакти</string>
+    <string name="icon_facebook_description">Іконка Фейсбук</string>
+    <string name="icon_instagram_description">Іконка Інстаграм</string>
+    <string name="icon_linkedin_description">Іконка Лінкедін</string>
+
+    <!--Activity Registration-->
+    <string name="registration_header">Давай знайомитись</string>
+    <string name="fill_out_profile">Заповнюй профіль та переходь до застосунку!</string>
+    <string name="email">Електронна пошта</string>
+    <string name="password">Пароль</string>
+    <string name="remember_me">Запам\'ятати мене</string>
+    <string name="google">Google</string>
+    <string name="register">Зареєструватися</string>
+    <string name="about_terms_and_conditions">Натискаючи Зареєструватися ви погодуєтесь з Умовами використання</string>
+    <string name="have_an_account">Вже маєте акаунт?</string>
+    <string name="sign_in">Увійти</string>
+    <string name="or">або</string>
+    <string name="required_field">Обов\'язкове поле!</string>
+    <string name="invalid_email">Недійсна електронна пошта!</string>
+    <string name="required_digit_password">Потрібна принаймні 1 цифра</string>
+    <string name="password_rules">Пароль повинен містити великі та малі літери</string>
+    <string name="password_size">Довжина паролю не може бути менше 8</string>
+    <string name="incorrect_password_email">Некоректна електронна пошта або пароль!</string>
+    <string name="icon_google_description">Іконка Гугл</string>
+</resources>

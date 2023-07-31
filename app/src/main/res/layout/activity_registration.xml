@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineBeforeFields"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewLetsGet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:gravity="center"
+        android:text="@string/registration_header"
+        android:textColor="@color/profileWhite"
+        android:textSize="@dimen/text_size_lets_get"
+        app:layout_constraintBottom_toTopOf="@id/textViewFillOut"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toTopOf="@id/guideLineTop" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewFillOut"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_regular"
+        android:gravity="center"
+        android:text="@string/fill_out_profile"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_fill_out"
+        app:layout_constraintBottom_toTopOf="@id/guideLineBeforeFields"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/textViewLetsGet" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        app:errorEnabled="true"
+        app:expandedHintEnabled="false"
+        app:errorTextColor="@color/red"
+        app:hintTextAppearance="@style/TextInputHint"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/guideLineBeforeFields">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextEmail"
+            android:layout_width="match_parent"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:textColor="@color/profileWhite"
+            android:textSize="@dimen/text_size_fields" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_password"
+        android:hint="@string/password"
+        android:saveEnabled="true"
+        app:errorTextColor="@color/red"
+        app:boxStrokeErrorColor="@color/grey_text"
+        app:errorEnabled="true"
+        app:expandedHintEnabled="false"
+        app:hintTextAppearance="@style/TextInputHint"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:textColor="@color/profileWhite"
+            android:textSize="@dimen/text_size_fields" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/checkBoxRemember"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/checkbox_remember_height"
+        android:button="@drawable/checkbox_selector"
+        android:buttonTint="@color/white"
+        android:checked="true"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:paddingHorizontal="@dimen/padding_checkbox_remember"
+        android:text="@string/remember_me"
+        android:textColor="@color/grey_text"
+        android:textSize="@dimen/text_size_checkbox_remember"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutGoogle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_google_height"
+        android:background="@drawable/white_frame_button"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/textViewOr"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/guideLineButtons"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/google_icon_size"
+            android:layout_height="@dimen/google_icon_size"
+            android:layout_marginEnd="@dimen/margin_end_google_icon"
+            android:contentDescription="@string/icon_google_description"
+            android:src="@drawable/ic_google" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:text="@string/google"
+            android:textColor="@color/black"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_button_google" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewOr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:gravity="center"
+        android:paddingVertical="@dimen/padding_vertical_or"
+        android:text="@string/or"
+        android:textColor="@color/profileWhite"
+        android:textSize="@dimen/text_size_or"
+        app:layout_constraintBottom_toTopOf="@id/registration_button"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutGoogle" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registration_button"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_register_height"
+        android:background="@drawable/logo_circle"
+        android:text="@string/register"
+        android:textColor="@color/profileWhite"
+        android:textSize="@dimen/text_size_button_register"
+        app:layout_constraintBottom_toTopOf="@id/textViewTerms"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/textViewOr" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewTerms"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_terms"
+        android:layout_marginTop="@dimen/margin_top_terms"
+        android:fontFamily="@font/open_sans_regular"
+        android:gravity="center"
+        android:text="@string/about_terms_and_conditions"
+        android:textColor="@color/profileWhite"
+        android:textSize="@dimen/text_size_terms_already_have_sign_in"
+        app:layout_constraintBottom_toTopOf="@id/textViewAlreadyHave"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft"
+        app:layout_constraintTop_toBottomOf="@id/registration_button" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewAlreadyHave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:gravity="end"
+        android:text="@string/have_an_account"
+        android:textColor="@color/grey_text"
+        android:textSize="@dimen/text_size_terms_already_have_sign_in"
+        app:layout_constraintBottom_toBottomOf="@id/guideLineBottom"
+        app:layout_constraintEnd_toStartOf="@id/textViewSignIn"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/guideLineLeft" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start_sign_in"
+        android:fontFamily="@font/open_sans_semi_bold"
+        android:gravity="start"
+        android:text="@string/sign_in"
+        android:textColor="@color/profileWhite"
+        android:textSize="@dimen/text_size_terms_already_have_sign_in"
+        app:layout_constraintBottom_toBottomOf="@id/guideLineBottom"
+        app:layout_constraintEnd_toEndOf="@id/guideLineRight"
+        app:layout_constraintStart_toEndOf="@id/textViewAlreadyHave" />
+</androidx.constraintlayout.widget.ConstraintLayout>

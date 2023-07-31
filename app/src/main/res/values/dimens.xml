@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Activity Main-->
+    <dimen name="text_size_settings">28sp</dimen>
+    <dimen name="text_size_name_surname">20sp</dimen>
+    <dimen name="text_size_button_view_my_contacts">20sp</dimen>
+    <dimen name="text_size_career_address">18sp</dimen>
+    <dimen name="text_size_button_edit_profile">16sp</dimen>
+    <dimen name="text_size_name_surname_land">22sp</dimen>
+    <dimen name="text_size_career_address_land">20sp</dimen>
+
+    <dimen name="margin_bottom_button_edit_profile">16dp</dimen>
+    <dimen name="button_view_my_contacts_height">60dp</dimen>
+    <dimen name="photo_main">140dp</dimen>
+    <dimen name="margin_top_career">8dp</dimen>
+    <dimen name="margin_top_address">16dp</dimen>
+    <dimen name="margin_bottom_address">36dp</dimen>
+    <dimen name="margin_icons">20dp</dimen>
+    <dimen name="margin_top_name_surname">16dp</dimen>
+    <dimen name="margin_top_photo">16dp</dimen>
+    <dimen name="margin_photo_land">40dp</dimen>
+
+    <!--Activity Registration-->
+    <dimen name="text_size_lets_get">26sp</dimen>
+    <dimen name="text_size_fill_out">14sp</dimen>
+    <dimen name="text_size_fields">20sp</dimen>
+    <dimen name="text_size_checkbox_remember">18sp</dimen>
+    <dimen name="text_size_button_google">18sp</dimen>
+    <dimen name="text_size_or">18sp</dimen>
+    <dimen name="text_size_button_register">20sp</dimen>
+    <dimen name="text_size_terms_already_have_sign_in">16sp</dimen>
+
+    <dimen name="margin_top_password">16dp</dimen>
+    <dimen name="checkbox_remember_height">50dp</dimen>
+    <dimen name="padding_checkbox_remember">5dp</dimen>
+    <dimen name="button_google_height">48dp</dimen>
+    <dimen name="google_icon_size">20dp</dimen>
+    <dimen name="margin_end_google_icon">10dp</dimen>
+    <dimen name="button_register_height">60dp</dimen>
+    <dimen name="padding_vertical_or">8dp</dimen>
+    <dimen name="margin_top_terms">16dp</dimen>
+    <dimen name="margin_horizontal_terms">28dp</dimen>
+    <dimen name="margin_start_sign_in">12dp</dimen>
+</resources>

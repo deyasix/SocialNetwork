@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextInputHint" parent="TextAppearance.Design.Hint">
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="roundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+</resources>
